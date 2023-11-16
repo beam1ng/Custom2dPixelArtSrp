@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.Rendering;
 
 public class PixelArtRpInstance : RenderPipeline
@@ -29,6 +30,8 @@ public class PixelArtRpInstance : RenderPipeline
     private void RenderCamera(ScriptableRenderContext context, Camera camera)
     {
         context.SetupCameraProperties(camera);
+        Vector3 dlDir = GameObject.FindObjectOfType<Light>().transform.forward;
+        Shader.SetGlobalVector("_DirectionalLightDir", dlDir);
         
         camera.TryGetCullingParameters(out var cullingParameters);
         CullingResults cr = context.Cull(ref cullingParameters);
