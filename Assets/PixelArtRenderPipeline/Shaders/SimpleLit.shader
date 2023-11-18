@@ -4,12 +4,12 @@ Shader "PixelArtRp/SimpleLit"
     {
         _Color ("Color", Color) = (0.5,0.5,0.5,1)
     }
-    
+
     SubShader
     {
         Tags
         {
-            "LightMode"="PixelArtRp"
+            "LightMode"="PixelArtDeferred"
         }
 
         Pass
@@ -48,13 +48,10 @@ Shader "PixelArtRp/SimpleLit"
                 return o;
             }
 
-            float4 frag(v2f i) : SV_Target
+            void frag(v2f i, out float4 color : COLOR0, out float4 normal : COLOR1)
             {
-                float4 col = _Color;
-                float3 normalDirWs = normalize(i.normalWs);
-                float3 lightDir = _DirectionalLightDir.xyz;
-                float attenuation = saturate(-dot(lightDir, normalDirWs));
-                return col * attenuation;
+                color = _Color;
+                normal = float4(saturate(i.normalWs.xyz * 0.5 + float3(0.5, 0.5, 0.5)), 1);
             }
             ENDCG
         }

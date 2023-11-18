@@ -1,3 +1,4 @@
+using PixelArtRenderPipeline.Code.RenderPipeline;
 using UnityEngine;
 using UnityEngine.Rendering;
 
