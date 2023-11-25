@@ -6,7 +6,6 @@ namespace PixelArtRenderPipeline.Code.RenderPipeline
     public class PixelArtRpInstance : UnityEngine.Rendering.RenderPipeline
     {
         private PixelArtRpAsset _rpAsset;
-        private CommandBuffer cmd;
         private MultipleRenderTarget mrt;
 
         public PixelArtRpInstance(PixelArtRpAsset rpAsset)
@@ -14,60 +13,82 @@ namespace PixelArtRenderPipeline.Code.RenderPipeline
             _rpAsset = rpAsset;
             mrt = new MultipleRenderTarget();
         }
-
+        
         protected override void Render(ScriptableRenderContext context, Camera[] cameras)
         {
-            InitializeFrameData();
-            cmd.ClearRenderTarget(true, true, new Color(0, 0, 0));
-            context.ExecuteCommandBuffer(cmd);
-            context.Submit();
-
-
-            foreach (Camera camera in cameras)
-            {
-                mrt.SetupRenderTargets(cmd, camera.pixelWidth, camera.pixelHeight);
-
-                context.SetupCameraProperties(camera);
-                context.ExecuteCommandBuffer(cmd);
-                RenderCamera(context, camera);
-                context.Submit();
-
-                cmd.Clear();
-                mrt.DisposeRenderTargets();
-
-                if (camera == Camera.current)
-                {
-                    camera.targetTexture = mrt._albedoRt;
-                }
-            }
-
+            SetUpFrameData(context);
+            RenderCameras(context, cameras);
             DisposeFrameData();
         }
 
-        private void RenderCamera(ScriptableRenderContext context, Camera camera)
+        private void SetUpFrameData(ScriptableRenderContext context)
         {
-            camera.TryGetCullingParameters(out ScriptableCullingParameters cp);
-            CullingResults cr = context.Cull(ref cp);
-            DrawingSettings ds = new DrawingSettings(SrpConstants.DeferredShadingTagId, new SortingSettings(camera));
-            FilteringSettings fs = new FilteringSettings(RenderQueueRange.all);
-            context.DrawRenderers(cr, ref ds, ref fs);
-        }
-
-        private void InitializeFrameData()
-        {
-            cmd = CommandBufferPool.Get("PixelArtRpRender");
+            CommandBuffer cmd = CommandBufferPool.Get();
             SetupLights();
+            cmd.ClearRenderTarget(true, true, new Color(0, 0, 0,0));
+            context.ExecuteCommandBuffer(cmd);
+            context.Submit();
+            cmd.Release();
         }
 
-        private void DisposeFrameData()
+        private void RenderCameras(ScriptableRenderContext context, Camera[] cameras)
         {
-            cmd.Release();
+            foreach (Camera camera in cameras)
+            {
+                // if (camera.cameraType != CameraType.SceneView) continue;
+                if (!mrt.isSetUp)
+                {
+                    mrt.SetupRenderTargets(camera.pixelWidth,camera.pixelHeight);
+                }
+                
+                mrt.CreateRenderTargets();
+
+                context.SetupCameraProperties(camera);
+                DrawRenderers(context, camera);
+                DeferredLighting(context);
+
+                mrt.DisposeRenderTargets();
+            }
         }
 
         private void SetupLights()
         {
             Vector3 dlDir = GameObject.FindObjectOfType<Light>().transform.forward;
             Shader.SetGlobalVector("_DirectionalLightDir", dlDir);
+        }
+
+        private void DisposeFrameData()
+        {
+            
+        }
+
+        private void DrawRenderers(ScriptableRenderContext context, Camera camera)
+        {
+            CommandBuffer cmd = CommandBufferPool.Get();
+            cmd.SetRenderTarget(mrt,mrt._depthRt);
+            cmd.ClearRenderTarget(true,true,new Color(0,0,0,0));
+            context.ExecuteCommandBuffer(cmd);
+            
+            camera.TryGetCullingParameters(out ScriptableCullingParameters cp);
+            CullingResults cr = context.Cull(ref cp);
+            DrawingSettings ds = new DrawingSettings(SrpConstants.DeferredShadingTagId, new SortingSettings(camera));
+            FilteringSettings fs = new FilteringSettings(RenderQueueRange.all);
+            
+            context.DrawRenderers(cr, ref ds, ref fs);
+            context.Submit();
+            cmd.Release();
+        }
+
+        private void DeferredLighting(ScriptableRenderContext context)
+        {
+            CommandBuffer cmd = CommandBufferPool.Get();
+
+            Material mat = new Material(Shader.Find("PixelArtRp/DeferredLighting"));
+            cmd.Blit(mrt._normalRt,BuiltinRenderTextureType.CameraTarget);//,mat);
+            
+            context.ExecuteCommandBuffer(cmd);
+            context.Submit();
+            cmd.Release();
         }
     }
 }
