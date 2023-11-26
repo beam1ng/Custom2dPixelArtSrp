@@ -2,16 +2,15 @@ Shader "PixelArtRp/DeferredLighting"
 {
     Properties
     {
-        _MainTex ("Albedo (RGB)", 2D) = "white" {}
+        _Color("Color",Color) = (0,0,0,0)
+        _MainTex("MainTex",2D) = "white"{}
+        _Albedo ("Albedo (RGB)", 2D) = ""
+        _Normal ("Albedo (RGB)", 2D) = ""
+        _Depth ("Albedo (RGB)", 2D) = ""
     }
     
     SubShader
     {
-//        Tags
-//        {
-//            "LightMode"="PixelArtRp"
-//        }
-//        
         Pass
         {
             Blend Off
@@ -24,38 +23,61 @@ Shader "PixelArtRp/DeferredLighting"
             #pragma fragment frag
 
             #include "UnityCG.cginc"
+            #include "Lighting.cginc"
+            #include "UnityShaderUtilities.cginc"
+            #include "UnityPBSLighting.cginc"
+            #include "UnityImageBasedLighting.cginc"
+            #include "HLSLSupport.cginc"
+            #include "UnityLightingCommon.cginc"
+            #include "UnityGBuffer.cginc"
+            #include "UnityGlobalIllumination.cginc"
             
             struct appdata
             {
+                float4 vertex : POSITION;
                 float2 uv : TEXCOORD0;
             };
 
             struct v2f
             {
+                float4 positionCs : SV_POSITION;
                 float2 uv : TEXCOORD0;
             };
 
-            sampler2D _MainTex; //Albedo
-            // sampler2D _Metallic;
-            // sampler2D _Smoothness;
-            // sampler2D _Normal;
+            float3 _DirectionalLightDir;
+            
+            sampler2D _MainTex;
+            sampler2D _Albedo;
+            sampler2D _Normal;
+            sampler2D _Depth;
             float4 _MainTex_ST;
-            // float4 _Metallic_ST;
-            // float4 _Smoothness_ST;
-            // float4 _Normal_ST;
+            float4 _Albedo_ST;
+            float4 _Normal_ST;
+            float4 _Depth_ST;
 
             v2f vert(appdata v)
             {
                 v2f o;
-                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+                o.uv = TRANSFORM_TEX(v.uv, _Albedo);
+                o.positionCs = UnityObjectToClipPos(v.vertex);
                 return o;
             }
 
             float4 frag(v2f i):SV_Target
             {
-                float4 color = tex2D(_MainTex,i.uv);
-                return float4(color.rgb,1);
+                float4 albedo = tex2D(_Albedo,i.uv);
+                float4 normal = tex2D(_Normal,i.uv) * 2 - 1;
+                
+                float intensity = saturate(dot(normal,-_DirectionalLightDir));
+                float3 color = intensity * albedo.rgb;
+
+                //<DEBUG>
+                // return float4(albedo.rgb,1);
+                //</DEBUG>
+                
+                return float4(color,1);
             }
+            
             ENDCG
         }
     }
