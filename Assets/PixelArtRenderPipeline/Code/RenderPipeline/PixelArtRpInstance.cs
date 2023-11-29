@@ -37,7 +37,6 @@ namespace PixelArtRenderPipeline.Code.RenderPipeline
         {
             foreach (Camera camera in cameras)
             {
-                // if (camera.cameraType != CameraType.SceneView) continue;
                 if (!mrt.isSetUp)
                 {
                     mrt.SetupRenderTargets(camera.pixelWidth,camera.pixelHeight);
@@ -83,8 +82,9 @@ namespace PixelArtRenderPipeline.Code.RenderPipeline
             
             foreach (var renderer in PixelArtRenderer.PixelArtRenderers)
             {
-                int width = renderer.texelResolution.x;
-                int height = renderer.texelResolution.y;
+                renderer.UpdateRenderingData(camera);
+                int width = renderer.boundsPixelWidth;
+                int height = renderer.boundsPixelHeight;
                 cmd.GetTemporaryRT(Shader.PropertyToID("_Albedo_proxy"), width,height,0,FilterMode.Point,mrt._albedoRt.descriptor.graphicsFormat);
                 cmd.GetTemporaryRT(Shader.PropertyToID("_Normal_proxy"), width,height,0,FilterMode.Point,mrt._normalRt.descriptor.graphicsFormat);
                 cmd.GetTemporaryRT(Shader.PropertyToID("_Depth_proxy"), width,height,mrt._depthRt.descriptor.depthBufferBits,FilterMode.Point,mrt._depthRt.descriptor.graphicsFormat);
@@ -96,61 +96,72 @@ namespace PixelArtRenderPipeline.Code.RenderPipeline
                 },Shader.PropertyToID("_Depth_proxy"));
                 
                 cmd.ClearRenderTarget(true,true, new Color(0,0,0,0));
+                cmd.DrawMesh(renderer.mesh, renderer.transform.localToWorldMatrix, renderer.material, 0, 1);
                 
-                //todo: tell the shader the rendering bounds, so that the vertices can be changed
-                cmd.DrawMesh(renderer.mesh,renderer.transform.localToWorldMatrix,renderer.material,0,1);
                 cmd.SetGlobalTexture(Shader.PropertyToID("_Albedo_proxy"),Shader.PropertyToID("_Albedo_proxy"));
                 cmd.SetGlobalTexture(Shader.PropertyToID("_Normal_proxy"),Shader.PropertyToID("_Normal_proxy"));
                 cmd.SetGlobalTexture(Shader.PropertyToID("_Depth_proxy"),Shader.PropertyToID("_Depth_proxy"));
 
-                Mesh mesh = new Mesh();
-                Vector3[] vertices = new Vector3[4]
-                {
-                    new Vector3(0, 0, 0),
-                    new Vector3(width, 0, 0),
-                    new Vector3(0, height, 0),
-                    new Vector3(width, height, 0)
-                };
-                mesh.vertices = vertices;
+                Mesh mesh = GetQuad(width, height);
 
-                int[] tris = new int[6]
-                {
-                    // lower left triangle
-                    0, 2, 1,
-                    // upper right triangle
-                    2, 3, 1
-                };
-                mesh.triangles = tris;
-
-                Vector3[] normals = new Vector3[4]
-                {
-                    -Vector3.forward,
-                    -Vector3.forward,
-                    -Vector3.forward,
-                    -Vector3.forward
-                };
-                mesh.normals = normals;
-
-                Vector2[] uv = new Vector2[4]
-                {
-                    new Vector2(0, 0),
-                    new Vector2(1, 0),
-                    new Vector2(0, 1),
-                    new Vector2(1, 1)
-                };
-                mesh.uv = uv;
-                
                 cmd.SetRenderTarget(mrt,mrt._depthRt);
-                
                 cmd.DrawMesh(mesh,Matrix4x4.identity, renderer.material,0,0);
+                
+                context.ExecuteCommandBuffer(cmd);
+                cmd.Clear();
+                
                 cmd.ReleaseTemporaryRT(Shader.PropertyToID("_Albedo_proxy"));
                 cmd.ReleaseTemporaryRT(Shader.PropertyToID("_Normal_proxy"));
                 cmd.ReleaseTemporaryRT(Shader.PropertyToID("_Depth_proxy"));
+                
+                context.ExecuteCommandBuffer(cmd);
+                cmd.Clear();
             }
             
             context.ExecuteCommandBuffer(cmd);
             context.Submit();
             cmd.Release();
+        }
+
+        private static Mesh GetQuad(int width, int height)
+        {
+            Mesh mesh = new Mesh();
+            Vector3[] vertices = new Vector3[4]
+            {
+                new Vector3(0, 0, 0),
+                new Vector3(width, 0, 0),
+                new Vector3(0, height, 0),
+                new Vector3(width, height, 0)
+            };
+            mesh.vertices = vertices;
+
+            int[] tris = new int[6]
+            {
+                // lower left triangle
+                0, 2, 1,
+                // upper right triangle
+                2, 3, 1
+            };
+            mesh.triangles = tris;
+
+            Vector3[] normals = new Vector3[4]
+            {
+                -Vector3.forward,
+                -Vector3.forward,
+                -Vector3.forward,
+                -Vector3.forward
+            };
+            mesh.normals = normals;
+
+            Vector2[] uv = new Vector2[4]
+            {
+                new Vector2(0, 0),
+                new Vector2(1, 0),
+                new Vector2(0, 1),
+                new Vector2(1, 1)
+            };
+            mesh.uv = uv;
+            return mesh;
         }
 
         private void DeferredLighting(ScriptableRenderContext context)
