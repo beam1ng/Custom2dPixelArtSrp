@@ -72,7 +72,7 @@ Shader "PixelArtRp/DeferredLighting"
                 float3 color = intensity * albedo.rgb;
 
                 //<DEBUG>
-                return float4(albedo.rgb,1);
+                // return float4(albedo.rgb,1);
                 //</DEBUG>
                 
                 return float4(color,1);

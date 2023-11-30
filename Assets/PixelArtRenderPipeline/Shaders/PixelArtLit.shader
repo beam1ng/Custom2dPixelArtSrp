@@ -17,7 +17,7 @@ Shader "PixelArtRp/PixelArtLit"
 
         Pass
         {
-            Name "FinalPass"
+            Name "BlitToGBufferPass"
             Blend Off
             Cull Off
             ZWrite On
@@ -42,6 +42,7 @@ Shader "PixelArtRp/PixelArtLit"
             {
                 float4 vertex : SV_POSITION;
                 float2 uv : TEXCOORD0;
+                float2 debug : TEXCOORD1;
             };
 
             float4 _Color;
@@ -59,7 +60,6 @@ Shader "PixelArtRp/PixelArtLit"
             v2f vert(appdata v)
             {
                 v2f o;
-
                 float2 minBoundsCs = _RendererBoundsCs2d.xy;
                 float2 maxBoundsCs = _RendererBoundsCs2d.zw;
                 float2 boundsVertex = (1 - v.vertex) * minBoundsCs + v.vertex * maxBoundsCs;
@@ -69,6 +69,8 @@ Shader "PixelArtRp/PixelArtLit"
                 #if UNITY_UV_STARTS_AT_TOP
                 o.vertex.y = -o.vertex.y;
                 #endif
+
+                o.debug = v.vertex.xy;
                 return o;
             }
 
@@ -79,6 +81,7 @@ Shader "PixelArtRp/PixelArtLit"
                 depth = tex2D(_Normal_proxy, i.uv);
 
                 // color = float4(1, 0, 0, 1);
+                // color = float4(i.debug.xy%1,0,1);
             }
             ENDCG
         }
