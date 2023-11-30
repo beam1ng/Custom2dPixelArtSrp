@@ -118,41 +118,45 @@ Shader "PixelArtRp/PixelArtLit"
             float4 _Color;
             sampler2D _Albedo;
             float4 _Albedo_ST;
-
             float3 _DirectionalLightDir;
-
             float4 _RendererBoundsCs2d; //min x, min y, max x, max y
 
-            float4 RemapRendererToScreen(float4 vertexCs, float2 screenUv, float4 rendererBoundsCs)
+            float4 RemapPos(float4 position,float2 inMin, float2 inMax, float2 outMin, float2 outMax)
             {
-                float4 rendererBoundsNdc = rendererBoundsCs * 0.5 + 0.5;
-                
-                float2 newMin = rendererBoundsNdc.zw/(rendererBoundsNdc.zw-rendererBoundsNdc.xy);
-                float2 newMax = (rendererBoundsNdc.zw-1)/(rendererBoundsNdc.zw-rendererBoundsNdc.xy);
-
-                float2 newCs = screenUv * (newMax - newMin) + newMin;
-                return float4(newCs.xy,vertexCs.zw);
+                float2 progress = (position - inMin)/(inMax - inMin);
+                float2 newPosition = outMin + progress * (outMax - outMin);
+                return float4(newPosition.xy,position.zw);
             }
 
             v2f vert(appdata v)
             {
                 v2f o;
 
+                //y is flipped (needed for rendering, else it will be backfaced)
                 o.vertex = UnityObjectToClipPos(v.vertex);
 
-                float4 rbcs2d = _RendererBoundsCs2d;
+                float4 vertexCs = o.vertex;
 
-                // #if UNITY_UV_STARTS_AT_TOP
-                // _RendererBoundsCs2d.yw = - _RendererBoundsCs2d.yw;
-                // #endif
+                //y is not flipped
+                #if UNITY_UV_STARTS_AT_TOP
+                vertexCs.y*=-1;
+                #endif
+
+                //xy range from 0.0 (left down) to 1.0 (right up) 
+                float2 rendererUv = (vertexCs - _RendererBoundsCs2d.xy)/(_RendererBoundsCs2d.zw - _RendererBoundsCs2d.xy);
+
+                float2 screenUv = (_RendererBoundsCs2d.xy + (_RendererBoundsCs2d.zw - _RendererBoundsCs2d.xy) * rendererUv) * 0.5 + 0.5;
+
+                o.vertex = RemapPos(vertexCs,_RendererBoundsCs2d.xy,_RendererBoundsCs2d.zw,float2(-1,-1),float2(1,1));
+
+                //y needs to be flipped for rendering
+                #if UNITY_UV_STARTS_AT_TOP
+                o.vertex.y *= -1;
+                #endif
                 
-                
-                float2 rendererUv = (o.vertex.xy - _RendererBoundsCs2d.xy)/(_RendererBoundsCs2d.zw - _RendererBoundsCs2d.xy);
-                
-                o.vertex = RemapRendererToScreen(o.vertex, rendererUv, _RendererBoundsCs2d);
+                o.screenUv = screenUv;
                 o.normalWs = mul(UNITY_MATRIX_M, float4(v.normal.xyz, 0));
                 o.uv = TRANSFORM_TEX(v.uv, _Albedo);
-                o.screenUv = rendererUv;
                 return o;
             }
 
@@ -162,8 +166,6 @@ Shader "PixelArtRp/PixelArtLit"
 
                 color = tex2D(_Albedo, i.uv);
                 normal = float4(i.normalWs.xyz * 0.5 + 0.5, 1);
-
-                color = float4(i.screenUv.xy,0,1);
             }
             ENDCG
         }
