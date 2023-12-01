@@ -107,14 +107,12 @@ namespace PixelArtRenderPipeline.Code.RenderPipeline
                 cmd.SetRenderTarget(mrt,mrt._depthRt);
                 cmd.DrawMesh(mesh,Matrix4x4.identity, renderer.material,0,0);
                 
-                context.ExecuteCommandBuffer(cmd);
-                cmd.Clear();
-                
                 cmd.ReleaseTemporaryRT(Shader.PropertyToID("_Albedo_proxy"));
                 cmd.ReleaseTemporaryRT(Shader.PropertyToID("_Normal_proxy"));
                 cmd.ReleaseTemporaryRT(Shader.PropertyToID("_Depth_proxy"));
                 
                 context.ExecuteCommandBuffer(cmd);
+                context.Submit();
                 cmd.Clear();
             }
             

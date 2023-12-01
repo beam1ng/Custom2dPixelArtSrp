@@ -22,7 +22,7 @@ Shader "PixelArtRp/PixelArtLit"
             Cull Off
             ZWrite On
             ZTest LEqual
-
+            
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
@@ -49,28 +49,40 @@ Shader "PixelArtRp/PixelArtLit"
             sampler2D _Albedo_proxy;
             sampler2D _Normal_proxy;
             sampler2D _Depth_proxy;
-            float4 _Albedo_ST;
-            float4 _Normal_ST;
-            float4 _Depth_ST;
+            float4 _Albedo_proxy_ST;
+            float4 _Normal_proxy_ST;
+            float4 _Depth_proxy_ST;
 
             float3 _DirectionalLightDir;
 
             float4 _RendererBoundsCs2d; //min x, min y, max x, max y
+            float3 _PostPixelizationUpVector;
 
             v2f vert(appdata v)
             {
                 v2f o;
                 float2 minBoundsCs = _RendererBoundsCs2d.xy;
                 float2 maxBoundsCs = _RendererBoundsCs2d.zw;
+                o.uv = v.vertex.xy;
+                float3 postPixelizationRightVector = cross(float3(0,0,-1),_PostPixelizationUpVector);
+                v.vertex.xy -= 0.5;
+                v.vertex.xy = float2(
+                    _PostPixelizationUpVector.x * v.vertex.y + postPixelizationRightVector.x * v.vertex.x,
+                    _PostPixelizationUpVector.y * v.vertex.y + postPixelizationRightVector.y * v.vertex.x
+                );
+                v.vertex.xy += 0.5;
                 float2 boundsVertex = (1 - v.vertex) * minBoundsCs + v.vertex * maxBoundsCs;
+                
+                
                 o.vertex = float4(boundsVertex.xy, 1, 1);
-                o.uv = v.vertex;
 
                 #if UNITY_UV_STARTS_AT_TOP
                 o.vertex.y = -o.vertex.y;
                 #endif
 
-                o.debug = v.vertex.xy;
+                
+
+                o.debug = v.uv;
                 return o;
             }
 
@@ -78,10 +90,14 @@ Shader "PixelArtRp/PixelArtLit"
             {
                 color = tex2D(_Albedo_proxy, i.uv);
                 normal = tex2D(_Normal_proxy, i.uv);
-                depth = tex2D(_Normal_proxy, i.uv);
-
-                // color = float4(1, 0, 0, 1);
-                // color = float4(i.debug.xy%1,0,1);
+                normal= normal * 2 - 1;
+                float3 postPixelizationRightVector = cross(float3(0,0,-1),_PostPixelizationUpVector);
+                normal.xy = float2(
+                    _PostPixelizationUpVector.x * normal.y + postPixelizationRightVector.x * normal.x,
+                    _PostPixelizationUpVector.y * normal.y + postPixelizationRightVector.y * normal.x
+                );
+                normal = normal * 0.5 + 0.5;
+                depth = tex2D(_Depth_proxy, i.uv);
             }
             ENDCG
         }
