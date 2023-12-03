@@ -49,7 +49,7 @@ namespace PixelArtRenderPipeline.Code.RenderPipeline
                 DeferredLighting(context);
                 
                 context.DrawSkybox(camera);
-                if (Application.isEditor)
+                if (Application.isEditor && SceneView.lastActiveSceneView.drawGizmos)
                 {
                     context.DrawGizmos(camera, GizmoSubset.PreImageEffects);
                     context.DrawGizmos(camera, GizmoSubset.PostImageEffects);

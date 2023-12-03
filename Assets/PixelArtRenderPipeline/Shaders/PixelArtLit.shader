@@ -183,7 +183,7 @@ Shader "PixelArtRp/PixelArtLit"
             {
                 i.normalWs = normalize(i.normalWs);
 
-                color = tex2D(_Albedo, i.uv);
+                color = tex2D(_Albedo, i.uv) * _Color;
                 normal = float4(i.normalWs.xyz * 0.5 + 0.5, 1);
             }
             ENDCG

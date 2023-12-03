@@ -344,13 +344,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 593208397}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.028551687, y: 0.9709595, z: 0.1516013, w: 0.18286474}
-  m_LocalPosition: {x: -0.15, y: -0.25, z: 0}
+  m_LocalRotation: {x: 0.26525533, y: 0.18547815, z: -0.052077077, w: 0.94473565}
+  m_LocalPosition: {x: 0, y: 0, z: -3}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0.2, y: -179, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 241.72, z: 45}
 --- !u!114 &593208402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,10 +365,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 0127d9d3a33e4bc44853ad5ffdfeac11, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-  texelPixelSize: 10
-  boundsPixelWidth: 31
-  boundsPixelHeight: 29
-  postPixelizationUpVector: {x: -0.9982066, y: 0.059862494, z: 0}
+  texelPixelSize: 20
+  boundsPixelWidth: 17
+  boundsPixelHeight: 13
+  postPixelizationUpVector: {x: 0, y: 1, z: 0}
 --- !u!114 &593208403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,13 +376,87 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 593208397}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a30cb699f8f89749a23c32fbb8ffd78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rotationAngularSpeed: 270
   directionChoicePeriod: 2
+--- !u!1 &1040589530
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1040589534}
+  - component: {fileID: 1040589533}
+  - component: {fileID: 1040589532}
+  - component: {fileID: 1040589531}
+  m_Layer: 0
+  m_Name: background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1040589531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040589530}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a30cb699f8f89749a23c32fbb8ffd78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationAngularSpeed: 270
+  directionChoicePeriod: 2
+--- !u!33 &1040589532
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040589530}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1040589533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040589530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6841e6b4da27670408d51bcbad49284e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
+  mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  texelPixelSize: 1
+  boundsPixelWidth: 1430
+  boundsPixelHeight: 1430
+  postPixelizationUpVector: {x: 0, y: 1, z: 0}
+--- !u!4 &1040589534
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040589530}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 25, y: 25, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -390,3 +464,4 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 151263656}
   - {fileID: 593208401}
+  - {fileID: 1040589534}

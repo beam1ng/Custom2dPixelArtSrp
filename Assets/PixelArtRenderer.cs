@@ -40,7 +40,7 @@ public class PixelArtRenderer : MonoBehaviour
     {
         _currentCamera = camera;
         _rendererBoundsCs2d = CalculateRendererBounds();
-        postPixelizationUpVector = Quaternion.AngleAxis(Time.time * 60, Vector3.forward) * Vector3.up;
+        // postPixelizationUpVector = Quaternion.AngleAxis(Time.time * 0, Vector3.forward) * (Vector3.up + Vector3.right);
         material.SetVector(PostPixelizationUpVector,postPixelizationUpVector);
         material.SetVector(RendererBoundsCs2d,_rendererBoundsCs2d);
     }
