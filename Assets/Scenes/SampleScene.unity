@@ -210,13 +210,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 151263654}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.43742073, y: 0.21528283, z: -0.19809836, w: 0.85033727}
+  m_LocalRotation: {x: 0.52930427, y: 0.2850369, z: -0.25553226, w: 0.75716203}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 56.017, y: 740.18, z: -15.414}
+  m_LocalEulerAnglesHint: {x: 71.3, y: 750.17, z: -15.414}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,8 +366,8 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 0127d9d3a33e4bc44853ad5ffdfeac11, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 20
-  boundsPixelWidth: 17
-  boundsPixelHeight: 13
+  boundsPixelWidth: 22
+  boundsPixelHeight: 17
   postPixelizationUpVector: {x: 0, y: 1, z: 0}
 --- !u!114 &593208403
 MonoBehaviour:
@@ -439,8 +439,8 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 1
-  boundsPixelWidth: 1430
-  boundsPixelHeight: 1430
+  boundsPixelWidth: 1817
+  boundsPixelHeight: 1817
   postPixelizationUpVector: {x: 0, y: 1, z: 0}
 --- !u!4 &1040589534
 Transform:
