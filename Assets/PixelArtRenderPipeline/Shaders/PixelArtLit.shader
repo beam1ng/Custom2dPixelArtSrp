@@ -161,9 +161,9 @@ Shader "PixelArtRp/PixelArtLit"
                 vertexCs.y*=-1;
                 #endif
 
-                //xy range from 0.0 (left down) to 1.0 (right up) 
+                //xy range from 0.0 (left down) to 1.0 (right up)
                 float2 rendererUv = (vertexCs - _RendererBoundsCs2d.xy)/(_RendererBoundsCs2d.zw - _RendererBoundsCs2d.xy);
-
+                
                 float2 screenUv = (_RendererBoundsCs2d.xy + (_RendererBoundsCs2d.zw - _RendererBoundsCs2d.xy) * rendererUv) * 0.5 + 0.5;
 
                 o.vertex = RemapPos(vertexCs,_RendererBoundsCs2d.xy,_RendererBoundsCs2d.zw,float2(-1,-1),float2(1,1));

@@ -12,9 +12,15 @@ public class PixelArtRenderer : MonoBehaviour
     [Range(1,20)]
     public int texelPixelSize = 10;
 
-    public int boundsPixelWidth;
-    public int boundsPixelHeight;
+    public int boundsProxyTexelWidth;
+    public int boundsProxyTexelHeight;
 
+    public Quaternion proxyRotation = Quaternion.identity;
+
+    [Header("Post pix. up vector")]
+    [SerializeField]
+    private bool pPUVisBoundToRotation = true;
+    
     [SerializeField]
     private Vector3 postPixelizationUpVector = Vector3.up;
     
@@ -41,6 +47,10 @@ public class PixelArtRenderer : MonoBehaviour
         _currentCamera = camera;
         _rendererBoundsCs2d = CalculateRendererBounds();
         // postPixelizationUpVector = Quaternion.AngleAxis(Time.time * 0, Vector3.forward) * (Vector3.up + Vector3.right);
+        postPixelizationUpVector = Vector3.Cross(Vector3.back,Vector3.Cross(transform.rotation * Vector3.up,Vector3.back)).normalized;
+        Debug.DrawRay(transform.position,postPixelizationUpVector);
+        proxyRotation = Quaternion.FromToRotation(postPixelizationUpVector, Vector3.up);
+        Debug.DrawRay(transform.position,proxyRotation*postPixelizationUpVector);
         material.SetVector(PostPixelizationUpVector,postPixelizationUpVector);
         material.SetVector(RendererBoundsCs2d,_rendererBoundsCs2d);
     }
@@ -65,7 +75,17 @@ public class PixelArtRenderer : MonoBehaviour
 
     private Vector4 CalculateRendererBounds()
     {
-        var bounds = GeometryUtility.CalculateBounds(mesh.vertices, transform.localToWorldMatrix);
+        //this doesn't work properly - doesn't take the proxy rotation into consideration
+
+        Matrix4x4 trasnsformation = transform.localToWorldMatrix * Matrix4x4.Rotate(proxyRotation);
+        var bounds = GeometryUtility.CalculateBounds(mesh.vertices,  trasnsformation);
+        Debug.DrawLine(bounds.min,bounds.max);
+        Debug.DrawLine(trasnsformation * mesh.vertices[0],trasnsformation * mesh.vertices[1]);
+        // Debug.DrawLine(trasnsformation * mesh.vertices[1],trasnsformation * mesh.vertices[2]);
+        Debug.DrawLine(trasnsformation * mesh.vertices[2],trasnsformation * mesh.vertices[3]);
+        // Debug.DrawLine(trasnsformation * mesh.vertices[3],trasnsformation * mesh.vertices[4]);
+        // Debug.DrawLine(trasnsformation * mesh.vertices[4],trasnsformation * mesh.vertices[5]);
+        // Debug.DrawLine(trasnsformation * mesh.vertices[5],trasnsformation * mesh.vertices[0]);
         Vector3 boundsMinWs = bounds.min;
         Vector3 boundsMaxWs = bounds.max;
         Vector3 boundsMinSs = _currentCamera.WorldToScreenPoint(boundsMinWs);
@@ -86,8 +106,8 @@ public class PixelArtRenderer : MonoBehaviour
         boundsMaxSs.x += sizeExtensionRight;
         boundsMaxSs.y += sizeExtensionUp;
 
-        boundsPixelWidth = ((int)boundsMaxSs.x - (int)boundsMinSs.x) / texelPixelSize;
-        boundsPixelHeight = ((int)boundsMaxSs.y - (int)boundsMinSs.y) / texelPixelSize;
+        boundsProxyTexelWidth = ((int)boundsMaxSs.x - (int)boundsMinSs.x) / texelPixelSize;
+        boundsProxyTexelHeight = ((int)boundsMaxSs.y - (int)boundsMinSs.y) / texelPixelSize;
 
         Vector3 boundsMinVs = _currentCamera.ScreenToViewportPoint(boundsMinSs);
         Vector3 boundsMaxVs = _currentCamera.ScreenToViewportPoint(boundsMaxSs);

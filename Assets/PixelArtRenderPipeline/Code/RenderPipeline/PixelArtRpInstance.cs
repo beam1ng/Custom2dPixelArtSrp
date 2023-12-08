@@ -83,8 +83,8 @@ namespace PixelArtRenderPipeline.Code.RenderPipeline
             foreach (var renderer in PixelArtRenderer.PixelArtRenderers)
             {
                 renderer.UpdateRenderingData(camera);
-                int width = renderer.boundsPixelWidth;
-                int height = renderer.boundsPixelHeight;
+                int width = renderer.boundsProxyTexelWidth;
+                int height = renderer.boundsProxyTexelHeight;
                 cmd.GetTemporaryRT(Shader.PropertyToID("_Albedo_proxy"), width,height,0,FilterMode.Point,mrt._albedoRt.descriptor.graphicsFormat);
                 cmd.GetTemporaryRT(Shader.PropertyToID("_Normal_proxy"), width,height,0,FilterMode.Point,mrt._normalRt.descriptor.graphicsFormat);
                 cmd.GetTemporaryRT(Shader.PropertyToID("_Depth_proxy"), width,height,mrt._depthRt.descriptor.depthBufferBits,FilterMode.Point,mrt._depthRt.descriptor.graphicsFormat);
@@ -96,7 +96,7 @@ namespace PixelArtRenderPipeline.Code.RenderPipeline
                 },Shader.PropertyToID("_Depth_proxy"));
                 
                 cmd.ClearRenderTarget(true,true, new Color(0,0,0,0));
-                cmd.DrawMesh(renderer.mesh, renderer.transform.localToWorldMatrix, renderer.material, 0, 1);
+                cmd.DrawMesh(renderer.mesh, renderer.transform.localToWorldMatrix * Matrix4x4.Rotate(renderer.proxyRotation), renderer.material, 0, 1);
                 
                 cmd.SetGlobalTexture(Shader.PropertyToID("_Albedo_proxy"),Shader.PropertyToID("_Albedo_proxy"));
                 cmd.SetGlobalTexture(Shader.PropertyToID("_Normal_proxy"),Shader.PropertyToID("_Normal_proxy"));

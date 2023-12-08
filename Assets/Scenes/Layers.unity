@@ -171,9 +171,11 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 4
-  boundsPixelWidth: 53
-  boundsPixelHeight: 360
-  postPixelizationUpVector: {x: 0, y: 1, z: 0}
+  boundsProxyTexelWidth: 53
+  boundsProxyTexelHeight: 360
+  proxyRotation: {x: 0, y: 0, z: 0.068449594, w: 0.9976546}
+  pPUVisBoundToRotation: 1
+  postPixelizationUpVector: {x: 0.13657808, y: 0.9906293, z: 0}
 --- !u!33 &31808358
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -230,9 +232,11 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 4
-  boundsPixelWidth: 105
-  boundsPixelHeight: 349
-  postPixelizationUpVector: {x: 0, y: 1, z: 0}
+  boundsProxyTexelWidth: 105
+  boundsProxyTexelHeight: 349
+  proxyRotation: {x: 0, y: 0, z: 0.14419335, w: 0.9895496}
+  pPUVisBoundToRotation: 1
+  postPixelizationUpVector: {x: 0.28537288, y: 0.9584166, z: 0}
 --- !u!33 &71348736
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -289,9 +293,11 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 4
-  boundsPixelWidth: 81
-  boundsPixelHeight: 356
-  postPixelizationUpVector: {x: 0, y: 1, z: 0}
+  boundsProxyTexelWidth: 81
+  boundsProxyTexelHeight: 356
+  proxyRotation: {x: 0, y: 0, z: 0.10547286, w: 0.9944222}
+  pPUVisBoundToRotation: 1
+  postPixelizationUpVector: {x: 0.20976913, y: 0.97775096, z: 0}
 --- !u!33 &154400263
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -299,6 +305,67 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 154400260}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &156539617
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 156539618}
+  - component: {fileID: 156539620}
+  - component: {fileID: 156539619}
+  m_Layer: 0
+  m_Name: Cube (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &156539618
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156539617}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0.35233167, w: 0.93587524}
+  m_LocalPosition: {x: 0, y: 2.16, z: 0}
+  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 333206457}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 41.26}
+--- !u!114 &156539619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156539617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6841e6b4da27670408d51bcbad49284e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
+  mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  texelPixelSize: 5
+  boundsProxyTexelWidth: 28
+  boundsProxyTexelHeight: 30
+  proxyRotation: {x: 0, y: 0, z: -0.3523317, w: 0.9358752}
+  pPUVisBoundToRotation: 1
+  postPixelizationUpVector: {x: -0.659477, y: 0.7517248, z: 0}
+--- !u!33 &156539620
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156539617}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &167311529
 GameObject:
@@ -348,9 +415,11 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 4
-  boundsPixelWidth: 165
-  boundsPixelHeight: 327
-  postPixelizationUpVector: {x: 0, y: 1, z: 0}
+  boundsProxyTexelWidth: 165
+  boundsProxyTexelHeight: 327
+  proxyRotation: {x: 0, y: 0, z: 0.22819535, w: 0.9736154}
+  pPUVisBoundToRotation: 1
+  postPixelizationUpVector: {x: 0.444349, y: 0.89585376, z: 0}
 --- !u!33 &167311532
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -374,7 +443,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &300774919
 Transform:
   m_ObjectHideFlags: 0
@@ -453,8 +522,10 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 6
-  boundsPixelWidth: 4
-  boundsPixelHeight: 121
+  boundsProxyTexelWidth: 4
+  boundsProxyTexelHeight: 121
+  proxyRotation: {x: 0, y: 0, z: 0, w: 1}
+  pPUVisBoundToRotation: 1
   postPixelizationUpVector: {x: 0, y: 1, z: 0}
 --- !u!33 &309752971
 MeshFilter:
@@ -494,6 +565,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1028706997}
+  - {fileID: 156539618}
   m_Father: {fileID: 891316018}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &563215454
@@ -511,7 +583,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &563215455
 Transform:
   m_ObjectHideFlags: 0
@@ -568,13 +640,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 581343746}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.00912118, w: 0.9999584}
+  m_LocalRotation: {x: 0, y: 0, z: 0.002705248, w: 0.9999964}
   m_LocalPosition: {x: -1.4133499, y: 0, z: 0}
   m_LocalScale: {x: 0.28745306, y: 20, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 563215455}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 1.0452194}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.31}
 --- !u!114 &581343748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -590,9 +662,11 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 4
-  boundsPixelWidth: 12
-  boundsPixelHeight: 363
-  postPixelizationUpVector: {x: 0, y: 1, z: 0}
+  boundsProxyTexelWidth: 8
+  boundsProxyTexelHeight: 364
+  proxyRotation: {x: 0, y: 0, z: -0.0027052485, w: 0.99999636}
+  pPUVisBoundToRotation: 0
+  postPixelizationUpVector: {x: -0.0054104766, y: 0.99998534, z: 0}
 --- !u!33 &581343749
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -649,8 +723,10 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 6
-  boundsPixelWidth: 4
-  boundsPixelHeight: 121
+  boundsProxyTexelWidth: 4
+  boundsProxyTexelHeight: 121
+  proxyRotation: {x: 0, y: 0, z: 0, w: 1}
+  pPUVisBoundToRotation: 1
   postPixelizationUpVector: {x: 0, y: 1, z: 0}
 --- !u!33 &590179766
 MeshFilter:
@@ -708,9 +784,11 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 4
-  boundsPixelWidth: 46
-  boundsPixelHeight: 361
-  postPixelizationUpVector: {x: 0, y: 1, z: 0}
+  boundsProxyTexelWidth: 46
+  boundsProxyTexelHeight: 361
+  proxyRotation: {x: 0, y: 0, z: 0.061357364, w: 0.99811584}
+  pPUVisBoundToRotation: 1
+  postPixelizationUpVector: {x: 0.12248352, y: 0.99247056, z: 0}
 --- !u!33 &602409205
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -767,9 +845,11 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 4
-  boundsPixelWidth: 149
-  boundsPixelHeight: 335
-  postPixelizationUpVector: {x: 0, y: 1, z: 0}
+  boundsProxyTexelWidth: 149
+  boundsProxyTexelHeight: 335
+  proxyRotation: {x: 0, y: 0, z: -0.2023456, w: 0.9793142}
+  pPUVisBoundToRotation: 1
+  postPixelizationUpVector: {x: -0.39631978, y: 0.9181126, z: 0}
 --- !u!33 &703606143
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -878,9 +958,11 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 4
-  boundsPixelWidth: 97
-  boundsPixelHeight: 352
-  postPixelizationUpVector: {x: 0, y: 1, z: 0}
+  boundsProxyTexelWidth: 97
+  boundsProxyTexelHeight: 352
+  proxyRotation: {x: 0, y: 0, z: -0.12740573, w: 0.99185073}
+  pPUVisBoundToRotation: 1
+  postPixelizationUpVector: {x: -0.2527349, y: 0.96753556, z: 0}
 --- !u!33 &944016066
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -937,8 +1019,10 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 6
-  boundsPixelWidth: 4
-  boundsPixelHeight: 121
+  boundsProxyTexelWidth: 4
+  boundsProxyTexelHeight: 121
+  proxyRotation: {x: 0, y: 0, z: 0, w: 1}
+  pPUVisBoundToRotation: 1
   postPixelizationUpVector: {x: 0, y: 1, z: 0}
 --- !u!33 &951802626
 MeshFilter:
@@ -996,8 +1080,10 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 6
-  boundsPixelWidth: 4
-  boundsPixelHeight: 121
+  boundsProxyTexelWidth: 4
+  boundsProxyTexelHeight: 121
+  proxyRotation: {x: 0, y: 0, z: 0, w: 1}
+  pPUVisBoundToRotation: 1
   postPixelizationUpVector: {x: 0, y: 1, z: 0}
 --- !u!33 &997789809
 MeshFilter:
@@ -1055,8 +1141,10 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 15
-  boundsPixelWidth: 485
-  boundsPixelHeight: 24
+  boundsProxyTexelWidth: 485
+  boundsProxyTexelHeight: 24
+  proxyRotation: {x: 0, y: 0, z: 0, w: 1}
+  pPUVisBoundToRotation: 1
   postPixelizationUpVector: {x: 0, y: 1, z: 0}
 --- !u!33 &1028706999
 MeshFilter:
@@ -1114,9 +1202,11 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 4
-  boundsPixelWidth: 119
-  boundsPixelHeight: 345
-  postPixelizationUpVector: {x: 0, y: 1, z: 0}
+  boundsProxyTexelWidth: 119
+  boundsProxyTexelHeight: 345
+  proxyRotation: {x: 0, y: 0, z: 0.16296045, w: 0.9866326}
+  pPUVisBoundToRotation: 1
+  postPixelizationUpVector: {x: 0.3215642, y: 0.9468878, z: 0}
 --- !u!33 &1046144407
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1173,9 +1263,11 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 4
-  boundsPixelWidth: 20
-  boundsPixelHeight: 362
-  postPixelizationUpVector: {x: 0, y: 1, z: 0}
+  boundsProxyTexelWidth: 20
+  boundsProxyTexelHeight: 362
+  proxyRotation: {x: 0, y: 0, z: 0.024453808, w: 0.99970096}
+  pPUVisBoundToRotation: 1
+  postPixelizationUpVector: {x: 0.04889299, y: 0.99880403, z: 0}
 --- !u!33 &1063616325
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1232,9 +1324,11 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 4
-  boundsPixelWidth: 109
-  boundsPixelHeight: 349
-  postPixelizationUpVector: {x: 0, y: 1, z: 0}
+  boundsProxyTexelWidth: 109
+  boundsProxyTexelHeight: 349
+  proxyRotation: {x: 0, y: 0, z: 0.14701626, w: 0.9891341}
+  pPUVisBoundToRotation: 1
+  postPixelizationUpVector: {x: 0.2908376, y: 0.95677245, z: 0}
 --- !u!33 &1066456269
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1383,9 +1477,11 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 4
-  boundsPixelWidth: 138
-  boundsPixelHeight: 340
-  postPixelizationUpVector: {x: 0, y: 1, z: 0}
+  boundsProxyTexelWidth: 138
+  boundsProxyTexelHeight: 340
+  proxyRotation: {x: 0, y: 0, z: 0.18733275, w: 0.9822965}
+  pPUVisBoundToRotation: 1
+  postPixelizationUpVector: {x: 0.3680326, y: 0.9298129, z: 0}
 --- !u!33 &1168858419
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1442,8 +1538,10 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 6
-  boundsPixelWidth: 4
-  boundsPixelHeight: 121
+  boundsProxyTexelWidth: 4
+  boundsProxyTexelHeight: 121
+  proxyRotation: {x: 0, y: 0, z: 0, w: 1}
+  pPUVisBoundToRotation: 1
   postPixelizationUpVector: {x: 0, y: 1, z: 0}
 --- !u!33 &1191750819
 MeshFilter:
@@ -1501,8 +1599,10 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 6
-  boundsPixelWidth: 4
-  boundsPixelHeight: 121
+  boundsProxyTexelWidth: 4
+  boundsProxyTexelHeight: 121
+  proxyRotation: {x: 0, y: 0, z: 0, w: 1}
+  pPUVisBoundToRotation: 1
   postPixelizationUpVector: {x: 0, y: 1, z: 0}
 --- !u!33 &1213665255
 MeshFilter:
@@ -1560,8 +1660,10 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 6
-  boundsPixelWidth: 4
-  boundsPixelHeight: 121
+  boundsProxyTexelWidth: 4
+  boundsProxyTexelHeight: 121
+  proxyRotation: {x: 0, y: 0, z: 0, w: 1}
+  pPUVisBoundToRotation: 1
   postPixelizationUpVector: {x: 0, y: 1, z: 0}
 --- !u!33 &1347598372
 MeshFilter:
@@ -1619,8 +1721,10 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 6
-  boundsPixelWidth: 4
-  boundsPixelHeight: 121
+  boundsProxyTexelWidth: 4
+  boundsProxyTexelHeight: 121
+  proxyRotation: {x: 0, y: 0, z: 0, w: 1}
+  pPUVisBoundToRotation: 1
   postPixelizationUpVector: {x: 0, y: 1, z: 0}
 --- !u!33 &1456451363
 MeshFilter:
@@ -1772,8 +1876,10 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 6
-  boundsPixelWidth: 4
-  boundsPixelHeight: 121
+  boundsProxyTexelWidth: 4
+  boundsProxyTexelHeight: 121
+  proxyRotation: {x: 0, y: 0, z: 0, w: 1}
+  pPUVisBoundToRotation: 1
   postPixelizationUpVector: {x: 0, y: 1, z: 0}
 --- !u!33 &1508638240
 MeshFilter:
@@ -1831,9 +1937,11 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 4
-  boundsPixelWidth: 145
-  boundsPixelHeight: 336
-  postPixelizationUpVector: {x: 0, y: 1, z: 0}
+  boundsProxyTexelWidth: 145
+  boundsProxyTexelHeight: 336
+  proxyRotation: {x: 0, y: 0, z: -0.19973236, w: 0.9798505}
+  pPUVisBoundToRotation: 1
+  postPixelizationUpVector: {x: -0.39141572, y: 0.92021394, z: 0}
 --- !u!33 &1513807989
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1890,8 +1998,10 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 6
-  boundsPixelWidth: 4
-  boundsPixelHeight: 121
+  boundsProxyTexelWidth: 4
+  boundsProxyTexelHeight: 121
+  proxyRotation: {x: 0, y: 0, z: 0, w: 1}
+  pPUVisBoundToRotation: 1
   postPixelizationUpVector: {x: 0, y: 1, z: 0}
 --- !u!33 &1516881965
 MeshFilter:
@@ -1949,9 +2059,11 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 4
-  boundsPixelWidth: 24
-  boundsPixelHeight: 363
-  postPixelizationUpVector: {x: 0, y: 1, z: 0}
+  boundsProxyTexelWidth: 24
+  boundsProxyTexelHeight: 363
+  proxyRotation: {x: 0, y: 0, z: -0.028008902, w: 0.9996077}
+  pPUVisBoundToRotation: 1
+  postPixelizationUpVector: {x: -0.05599583, y: 0.998431, z: 0}
 --- !u!33 &1552581479
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2008,9 +2120,11 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 4
-  boundsPixelWidth: 80
-  boundsPixelHeight: 356
-  postPixelizationUpVector: {x: 0, y: 1, z: 0}
+  boundsProxyTexelWidth: 80
+  boundsProxyTexelHeight: 356
+  proxyRotation: {x: 0, y: 0, z: -0.10658625, w: 0.99430346}
+  pPUVisBoundToRotation: 1
+  postPixelizationUpVector: {x: -0.21195814, y: 0.97727877, z: 0}
 --- !u!33 &1557980245
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2067,8 +2181,10 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 6
-  boundsPixelWidth: 4
-  boundsPixelHeight: 121
+  boundsProxyTexelWidth: 4
+  boundsProxyTexelHeight: 121
+  proxyRotation: {x: 0, y: 0, z: 0, w: 1}
+  pPUVisBoundToRotation: 1
   postPixelizationUpVector: {x: 0, y: 1, z: 0}
 --- !u!33 &1617182818
 MeshFilter:
@@ -2126,8 +2242,10 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 6
-  boundsPixelWidth: 4
-  boundsPixelHeight: 121
+  boundsProxyTexelWidth: 4
+  boundsProxyTexelHeight: 121
+  proxyRotation: {x: 0, y: 0, z: 0, w: 1}
+  pPUVisBoundToRotation: 1
   postPixelizationUpVector: {x: 0, y: 1, z: 0}
 --- !u!33 &1647210249
 MeshFilter:
@@ -2185,8 +2303,10 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 6
-  boundsPixelWidth: 4
-  boundsPixelHeight: 121
+  boundsProxyTexelWidth: 4
+  boundsProxyTexelHeight: 121
+  proxyRotation: {x: 0, y: 0, z: 0, w: 1}
+  pPUVisBoundToRotation: 1
   postPixelizationUpVector: {x: 0, y: 1, z: 0}
 --- !u!33 &1727746816
 MeshFilter:
@@ -2244,8 +2364,10 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 6
-  boundsPixelWidth: 4
-  boundsPixelHeight: 121
+  boundsProxyTexelWidth: 4
+  boundsProxyTexelHeight: 121
+  proxyRotation: {x: 0, y: 0, z: 0, w: 1}
+  pPUVisBoundToRotation: 1
   postPixelizationUpVector: {x: 0, y: 1, z: 0}
 --- !u!33 &1788322772
 MeshFilter:
@@ -2303,8 +2425,10 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 6
-  boundsPixelWidth: 4
-  boundsPixelHeight: 121
+  boundsProxyTexelWidth: 4
+  boundsProxyTexelHeight: 121
+  proxyRotation: {x: 0, y: 0, z: 0, w: 1}
+  pPUVisBoundToRotation: 1
   postPixelizationUpVector: {x: 0, y: 1, z: 0}
 --- !u!33 &1976722406
 MeshFilter:
