@@ -78,14 +78,37 @@ public class PixelArtRenderer : MonoBehaviour
         //this doesn't work properly - doesn't take the proxy rotation into consideration
 
         Matrix4x4 trasnsformation = transform.localToWorldMatrix * Matrix4x4.Rotate(proxyRotation);
-        var bounds = GeometryUtility.CalculateBounds(mesh.vertices,  trasnsformation);
+
+        Matrix4x4 t = Matrix4x4.TRS(transform.position, Quaternion.identity, transform.lossyScale);
+        // Matrix4x4 trasnsformation = Matrix4x4.Rotate(proxyRotation) * transform.localToWorldMatrix;
+        var bounds = GeometryUtility.CalculateBounds(mesh.vertices,  t);
         Debug.DrawLine(bounds.min,bounds.max);
-        Debug.DrawLine(trasnsformation * mesh.vertices[0],trasnsformation * mesh.vertices[1]);
-        // Debug.DrawLine(trasnsformation * mesh.vertices[1],trasnsformation * mesh.vertices[2]);
-        Debug.DrawLine(trasnsformation * mesh.vertices[2],trasnsformation * mesh.vertices[3]);
-        // Debug.DrawLine(trasnsformation * mesh.vertices[3],trasnsformation * mesh.vertices[4]);
-        // Debug.DrawLine(trasnsformation * mesh.vertices[4],trasnsformation * mesh.vertices[5]);
-        // Debug.DrawLine(trasnsformation * mesh.vertices[5],trasnsformation * mesh.vertices[0]);
+        
+
+        Vector4 vertex1 = mesh.vertices[0];
+        Vector4 vertex2 = mesh.vertices[1];
+        Vector4 vertex3 = mesh.vertices[2];
+        Vector4 vertex4 = mesh.vertices[3];
+
+        vertex1.w = 1;
+        vertex2.w = 1;
+        vertex3.w = 1;
+        vertex4.w = 1;
+        
+        Debug.DrawLine(Matrix4x4.Rotate(proxyRotation) * vertex1,Matrix4x4.Rotate(proxyRotation) * vertex2);
+        Debug.DrawLine(Matrix4x4.Rotate(proxyRotation) * vertex3,Matrix4x4.Rotate(proxyRotation) * vertex4);
+        
+        //final bounds
+        Debug.DrawLine(transform.localToWorldMatrix * vertex1,transform.localToWorldMatrix * vertex2,Color.blue);
+        Debug.DrawLine(transform.localToWorldMatrix * vertex3,transform.localToWorldMatrix * vertex4,Color.blue);
+        
+        Debug.DrawLine(trasnsformation * vertex1,trasnsformation * vertex2,Color.green);
+        Debug.DrawLine(trasnsformation * vertex3,trasnsformation * vertex4,Color.green);
+        
+        //proxy bounds
+        Debug.DrawLine(t * vertex1,t * vertex2,Color.red);
+        Debug.DrawLine(t * vertex3,t * vertex4,Color.red);
+        
         Vector3 boundsMinWs = bounds.min;
         Vector3 boundsMaxWs = bounds.max;
         Vector3 boundsMinSs = _currentCamera.WorldToScreenPoint(boundsMinWs);

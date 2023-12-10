@@ -73,14 +73,11 @@ Shader "PixelArtRp/PixelArtLit"
                 v.vertex.xy += 0.5;
                 float2 boundsVertex = (1 - v.vertex) * minBoundsCs + v.vertex * maxBoundsCs;
                 
-                
                 o.vertex = float4(boundsVertex.xy, 1, 1);
 
                 #if UNITY_UV_STARTS_AT_TOP
                 o.vertex.y = -o.vertex.y;
                 #endif
-
-                
 
                 o.debug = v.uv;
                 return o;
@@ -98,6 +95,13 @@ Shader "PixelArtRp/PixelArtLit"
                 );
                 normal = normal * 0.5 + 0.5;
                 depth = tex2D(_Depth_proxy, i.uv);
+
+                if(depth == 0.00000000000001)
+                {
+                    discard;
+                }
+                
+                color = float4(1,0,0,1);
             }
             ENDCG
         }
