@@ -14,20 +14,25 @@ public class PixelArtRenderer : MonoBehaviour
 
     public int boundsProxyTexelWidth;
     public int boundsProxyTexelHeight;
-
-    public Quaternion proxyRotation = Quaternion.identity;
-
-    [Header("Post pix. up vector")]
+    
     [SerializeField]
     private bool pPUVisBoundToRotation = true;
     
-    [SerializeField]
-    private Vector3 postPixelizationUpVector = Vector3.up;
-    
-    private Vector4 _rendererBoundsCs2d = Vector4.zero;
+    private Vector3 _postPixelizationUpVectorWs = Vector3.up;
+    private Quaternion _proxyRotation = Quaternion.identity;
+    public Matrix4x4 localToProxyWs = Matrix4x4.identity;
+    private Vector4 _proxyBoundsWs2d = Vector4.zero;
+    private Vector4 _proxyBoundsCs2d = Vector4.zero;
+    private Vector4 _finalBoundsCs2d = Vector4.zero;
+    private Vector4 _finalToProxyBoundsRatio = Vector4.zero;
+    private Vector4 _finalBoundsCenterWs = Vector4.zero;
 
-    private static readonly int RendererBoundsCs2d = Shader.PropertyToID("_RendererBoundsCs2d");
-    private static readonly int PostPixelizationUpVector = Shader.PropertyToID("_PostPixelizationUpVector");
+    private static readonly int ProxyBoundsWs2d = Shader.PropertyToID("_ProxyBoundsWs2d");
+    private static readonly int ProxyBoundsCs2d = Shader.PropertyToID("_ProxyBoundsCs2d");
+    private static readonly int FinalBoundsCs2d = Shader.PropertyToID("_FinalBoundsCs2d");
+    private static readonly int PostPixelizationUpVectorWs = Shader.PropertyToID("_PostPixelizationUpVectorWs");
+    private static readonly int FinalToProxyBoundsRatio = Shader.PropertyToID("_FinalToProxyBoundsRatio");
+    private static readonly int FinalBoundsCenterWs = Shader.PropertyToID("_FinalBoundsCenterWs");
 
     private Camera _currentCamera;
 
@@ -45,45 +50,39 @@ public class PixelArtRenderer : MonoBehaviour
     public void UpdateRenderingData(Camera camera)
     {
         _currentCamera = camera;
-        _rendererBoundsCs2d = CalculateRendererBounds();
-        // postPixelizationUpVector = Quaternion.AngleAxis(Time.time * 0, Vector3.forward) * (Vector3.up + Vector3.right);
-        postPixelizationUpVector = Vector3.Cross(Vector3.back,Vector3.Cross(transform.rotation * Vector3.up,Vector3.back)).normalized;
-        Debug.DrawRay(transform.position,postPixelizationUpVector);
-        proxyRotation = Quaternion.FromToRotation(postPixelizationUpVector, Vector3.up);
-        Debug.DrawRay(transform.position,proxyRotation*postPixelizationUpVector);
-        material.SetVector(PostPixelizationUpVector,postPixelizationUpVector);
-        material.SetVector(RendererBoundsCs2d,_rendererBoundsCs2d);
+        _proxyRotation = Quaternion.FromToRotation(_postPixelizationUpVectorWs, Vector3.up);
+        CalculateProxyBounds();
+        CalculateFinalBounds();
+        _finalToProxyBoundsRatio = new Vector4((_finalBoundsCs2d.z - _finalBoundsCs2d.x) / (_proxyBoundsCs2d.z - _proxyBoundsCs2d.x), (_finalBoundsCs2d.w - _finalBoundsCs2d.y) / (_proxyBoundsCs2d.w - _proxyBoundsCs2d.y), 0, 0);
+        _postPixelizationUpVectorWs = Vector3.Cross(Vector3.back,Vector3.Cross(transform.rotation * Vector3.up,Vector3.back)).normalized;
+        
+        
+        material.SetVector(PostPixelizationUpVectorWs,_postPixelizationUpVectorWs);
+        material.SetVector(ProxyBoundsCs2d,_proxyBoundsCs2d);
+        material.SetVector(ProxyBoundsWs2d,_proxyBoundsWs2d);
+        material.SetVector(FinalBoundsCs2d,_finalBoundsCs2d);
+        material.SetVector(FinalToProxyBoundsRatio,_finalToProxyBoundsRatio);
+        material.SetVector(FinalBoundsCenterWs,_finalBoundsCenterWs);
     }
 
-    private void OnDrawGizmosSelected()
+    private void CalculateFinalBounds()
     {
-        Vector4 rendererBounds = _rendererBoundsCs2d;
-
-        Vector3 leftUp = new Vector3(rendererBounds.x, rendererBounds.w, 0);
-        Vector3 rightUp = new Vector3(rendererBounds.z, rendererBounds.w, 0);
-        Vector3 leftDown = new Vector3(rendererBounds.x, rendererBounds.y, 0);
-        Vector3 rightDown = new Vector3(rendererBounds.z, rendererBounds.y, 0);
-
-        Gizmos.color = Color.yellow;
-        Gizmos.matrix = _currentCamera.cameraToWorldMatrix * GL.GetGPUProjectionMatrix(_currentCamera.projectionMatrix,false).inverse;
-        
-        Gizmos.DrawLine(leftUp,rightUp);
-        Gizmos.DrawLine(rightUp,rightDown);
-        Gizmos.DrawLine(rightDown,leftDown);
-        Gizmos.DrawLine(leftDown,leftUp);
+        Bounds finalBoundsWs = GeometryUtility.CalculateBounds(mesh.vertices, transform.localToWorldMatrix);
+        Vector3 finalBoundsMinSs = _currentCamera.WorldToScreenPoint(finalBoundsWs.min);
+        Vector3 finalBoundsMaxSs = _currentCamera.WorldToScreenPoint(finalBoundsWs.max);
+        Vector3 finalBoundsMinVs = _currentCamera.ScreenToViewportPoint(finalBoundsMinSs);
+        Vector3 finalBoundsMaxVs = _currentCamera.ScreenToViewportPoint(finalBoundsMaxSs);
+        Vector3 finalBoundsMinCs = finalBoundsMinVs * 2 - new Vector3(1, 1, 0);
+        Vector3 finalBoundsMaxCs = finalBoundsMaxVs * 2 - new Vector3(1, 1, 0);
+        _finalBoundsCs2d = new Vector4(finalBoundsMinCs.x, finalBoundsMinCs.y, finalBoundsMaxCs.x, finalBoundsMaxCs.y);
     }
 
-    private Vector4 CalculateRendererBounds()
+    private void CalculateProxyBounds()
     {
-        //this doesn't work properly - doesn't take the proxy rotation into consideration
-
-        Matrix4x4 trasnsformation = transform.localToWorldMatrix * Matrix4x4.Rotate(proxyRotation);
-
-        Matrix4x4 t = Matrix4x4.TRS(transform.position, Quaternion.identity, transform.lossyScale);
-        // Matrix4x4 trasnsformation = Matrix4x4.Rotate(proxyRotation) * transform.localToWorldMatrix;
-        var bounds = GeometryUtility.CalculateBounds(mesh.vertices,  t);
-        Debug.DrawLine(bounds.min,bounds.max);
+        Bounds finalBoundsWs = GeometryUtility.CalculateBounds(mesh.vertices,  transform.localToWorldMatrix);
+        localToProxyWs = Matrix4x4.Rotate(_proxyRotation) * Matrix4x4.Translate(-finalBoundsWs.center) * transform.localToWorldMatrix;
         
+        Bounds proxyBoundsWs = GeometryUtility.CalculateBounds(mesh.vertices, localToProxyWs);
 
         Vector4 vertex1 = mesh.vertices[0];
         Vector4 vertex2 = mesh.vertices[1];
@@ -95,28 +94,14 @@ public class PixelArtRenderer : MonoBehaviour
         vertex3.w = 1;
         vertex4.w = 1;
         
-        Debug.DrawLine(Matrix4x4.Rotate(proxyRotation) * vertex1,Matrix4x4.Rotate(proxyRotation) * vertex2);
-        Debug.DrawLine(Matrix4x4.Rotate(proxyRotation) * vertex3,Matrix4x4.Rotate(proxyRotation) * vertex4);
-        
-        //final bounds
-        Debug.DrawLine(transform.localToWorldMatrix * vertex1,transform.localToWorldMatrix * vertex2,Color.blue);
-        Debug.DrawLine(transform.localToWorldMatrix * vertex3,transform.localToWorldMatrix * vertex4,Color.blue);
-        
-        Debug.DrawLine(trasnsformation * vertex1,trasnsformation * vertex2,Color.green);
-        Debug.DrawLine(trasnsformation * vertex3,trasnsformation * vertex4,Color.green);
-        
-        //proxy bounds
-        Debug.DrawLine(t * vertex1,t * vertex2,Color.red);
-        Debug.DrawLine(t * vertex3,t * vertex4,Color.red);
-        
-        Vector3 boundsMinWs = bounds.min;
-        Vector3 boundsMaxWs = bounds.max;
-        Vector3 boundsMinSs = _currentCamera.WorldToScreenPoint(boundsMinWs);
-        Vector3 boundsMaxSs = _currentCamera.WorldToScreenPoint(boundsMaxWs);
+        Vector3 proxyBoundsMinWs = proxyBoundsWs.min;
+        Vector3 proxyBoundsMaxWs = proxyBoundsWs.max;
+        Vector3 proxyBoundsMinSs = _currentCamera.WorldToScreenPoint(proxyBoundsMinWs);
+        Vector3 proxyBoundsMaxSs = _currentCamera.WorldToScreenPoint(proxyBoundsMaxWs);
 
         Vector2Int sizeExtension = new Vector2Int(
-            texelPixelSize - (((int)boundsMaxSs.x - (int)boundsMinSs.x - 1) % texelPixelSize + 1),
-            texelPixelSize - (((int)boundsMaxSs.y - (int)boundsMinSs.y - 1) % texelPixelSize + 1)
+            texelPixelSize - (((int)proxyBoundsMaxSs.x - (int)proxyBoundsMinSs.x - 1) % texelPixelSize + 1),
+            texelPixelSize - (((int)proxyBoundsMaxSs.y - (int)proxyBoundsMinSs.y - 1) % texelPixelSize + 1)
         );
 
         int sizeExtensionLeft = sizeExtension.y % 2 + sizeExtension.y / 2;
@@ -124,19 +109,54 @@ public class PixelArtRenderer : MonoBehaviour
         int sizeExtensionUp = sizeExtension.x % 2 + sizeExtension.x / 2;
         int sizeExtensionDown = sizeExtension.x / 2;
 
-        boundsMinSs.x -= sizeExtensionLeft;
-        boundsMinSs.y -= sizeExtensionDown;
-        boundsMaxSs.x += sizeExtensionRight;
-        boundsMaxSs.y += sizeExtensionUp;
+        proxyBoundsMinSs.x -= sizeExtensionLeft;
+        proxyBoundsMinSs.y -= sizeExtensionDown;
+        proxyBoundsMaxSs.x += sizeExtensionRight;
+        proxyBoundsMaxSs.y += sizeExtensionUp;
 
-        boundsProxyTexelWidth = ((int)boundsMaxSs.x - (int)boundsMinSs.x) / texelPixelSize;
-        boundsProxyTexelHeight = ((int)boundsMaxSs.y - (int)boundsMinSs.y) / texelPixelSize;
+        proxyBoundsMinWs =  _currentCamera.ScreenToWorldPoint(proxyBoundsMinSs);
+        proxyBoundsMaxWs =  _currentCamera.ScreenToWorldPoint(proxyBoundsMaxSs);
 
-        Vector3 boundsMinVs = _currentCamera.ScreenToViewportPoint(boundsMinSs);
-        Vector3 boundsMaxVs = _currentCamera.ScreenToViewportPoint(boundsMaxSs);
-        Vector3 boundsMinCs = boundsMinVs * 2 - new Vector3(1, 1, 0);
-        Vector3 boundsMaxCs = boundsMaxVs * 2 - new Vector3(1, 1, 0);
+        _proxyBoundsWs2d = new Vector4(proxyBoundsMinWs.x, proxyBoundsMinWs.y, proxyBoundsMaxWs.x, proxyBoundsMaxWs.y);
 
-        return new Vector4(boundsMinCs.x, boundsMinCs.y, boundsMaxCs.x, boundsMaxCs.y);
+        boundsProxyTexelWidth = ((int)proxyBoundsMaxSs.x - (int)proxyBoundsMinSs.x) / texelPixelSize;
+        boundsProxyTexelHeight = ((int)proxyBoundsMaxSs.y - (int)proxyBoundsMinSs.y) / texelPixelSize;
+
+        Vector3 proxyBoundsMinVs = _currentCamera.ScreenToViewportPoint(proxyBoundsMinSs);
+        Vector3 proxyBoundsMaxVs = _currentCamera.ScreenToViewportPoint(proxyBoundsMaxSs);
+        Vector3 proxyBoundsMinCs = proxyBoundsMinVs * 2 - new Vector3(1, 1, 0);
+        Vector3 proxyBoundsMaxCs = proxyBoundsMaxVs * 2 - new Vector3(1, 1, 0);
+
+        _finalBoundsCenterWs = finalBoundsWs.center;
+        _finalBoundsCenterWs.w = 1;
+
+        _proxyBoundsCs2d = new Vector4(proxyBoundsMinCs.x, proxyBoundsMinCs.y, proxyBoundsMaxCs.x, proxyBoundsMaxCs.y);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Debug.DrawRay(transform.position,_postPixelizationUpVectorWs);
+        Debug.DrawRay(transform.position,_proxyRotation*_postPixelizationUpVectorWs);
+        
+        DrawBoundsGizmos(_proxyBoundsCs2d,Color.yellow);
+        DrawBoundsGizmos(_finalBoundsCs2d, Color.red);
+    }
+
+    private void DrawBoundsGizmos(Vector4 bounds, Color color)
+    {
+
+        Vector3 leftUp = new Vector3(bounds.x, bounds.w, 0);
+        Vector3 rightUp = new Vector3(bounds.z, bounds.w, 0);
+        Vector3 leftDown = new Vector3(bounds.x, bounds.y, 0);
+        Vector3 rightDown = new Vector3(bounds.z, bounds.y, 0);
+
+        Gizmos.color = color;
+        Gizmos.matrix = _currentCamera.cameraToWorldMatrix *
+                        GL.GetGPUProjectionMatrix(_currentCamera.projectionMatrix, false).inverse;
+
+        Gizmos.DrawLine(leftUp, rightUp);
+        Gizmos.DrawLine(rightUp, rightDown);
+        Gizmos.DrawLine(rightDown, leftDown);
+        Gizmos.DrawLine(leftDown, leftUp);
     }
 }

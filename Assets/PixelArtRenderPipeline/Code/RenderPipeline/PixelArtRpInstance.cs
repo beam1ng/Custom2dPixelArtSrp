@@ -96,7 +96,7 @@ namespace PixelArtRenderPipeline.Code.RenderPipeline
                 },Shader.PropertyToID("_Depth_proxy"));
                 
                 cmd.ClearRenderTarget(true,true, new Color(0,0,0,0));
-                cmd.DrawMesh(renderer.mesh, Matrix4x4.TRS(renderer.transform.position,Quaternion.identity,renderer.transform.lossyScale), renderer.material, 0, 1);
+                cmd.DrawMesh(renderer.mesh, renderer.localToProxyWs, renderer.material, 0, 1);
                 
                 cmd.SetGlobalTexture(Shader.PropertyToID("_Albedo_proxy"),Shader.PropertyToID("_Albedo_proxy"));
                 cmd.SetGlobalTexture(Shader.PropertyToID("_Normal_proxy"),Shader.PropertyToID("_Normal_proxy"));
