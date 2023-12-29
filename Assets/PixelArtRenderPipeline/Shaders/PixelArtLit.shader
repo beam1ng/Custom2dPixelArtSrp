@@ -54,13 +54,8 @@ Shader "PixelArtRp/PixelArtLit"
             float4 _Depth_proxy_ST;
 
             float3 _DirectionalLightDir;
-
             float4 _ProxyBoundsWs2d;
-            float4 _FinalBoundsCs2d; //min x, min y, max x, max y
-            float4 _ProxyBoundsCs2d; //min x, min y, max x, max y
             float3 _PostPixelizationUpVectorWs;
-
-            float4 _FinalToProxyBoundsRatio;
             float4 _FinalBoundsCenterWs;
 
             v2f vert(appdata v)
@@ -68,31 +63,16 @@ Shader "PixelArtRp/PixelArtLit"
                 v2f o;
                 
                 o.uv.xy = v.vertex.xy; // (0,0) to (1,1)
-                #if UNITY_REVERSED_Z
-                o.uv.y = 1 - o.uv.y;
                 float3 postPixelizationRightVectorWs = cross(float3(0,0,-1),_PostPixelizationUpVectorWs);
-                #else
-                float3 postPixelizationRightVectorWs = cross(float3(0,0,1),_PostPixelizationUpVectorWs);
-                #endif
-
                 v.vertex.xy = (1 - v.vertex) * _ProxyBoundsWs2d.xy + v.vertex * _ProxyBoundsWs2d.zw;
                 
                 v.vertex.xy = float2(
                     postPixelizationRightVectorWs.x * v.vertex.x + postPixelizationRightVectorWs.y * v.vertex.y,
                     _PostPixelizationUpVectorWs.x * v.vertex.x + _PostPixelizationUpVectorWs.y * v.vertex.y
                 );
-
-                #if UNITY_UV_STARTS_AT_TOP
-                v.vertex.xy += _FinalBoundsCenterWs.xy * float2(1,-1);
-                #else
-                v.vertex.xy += _FinalBoundsCenterWs).xy;
-                #endif
                 
-                o.vertex = mul(UNITY_MATRIX_VP,float4(v.vertex.xy,1,1));
-
-                #if UNITY_UV_STARTS_AT_TOP
-                o.vertex.y = -o.vertex.y;
-                #endif
+                v.vertex.xy += _FinalBoundsCenterWs.xy * float2(1,-1);
+                o.vertex = mul(UNITY_MATRIX_VP,float4(v.vertex.xy,0,1));
 
                 o.debug = v.uv;
                 return o;
@@ -104,10 +84,12 @@ Shader "PixelArtRp/PixelArtLit"
                 normal = tex2D(_Normal_proxy, i.uv);
                 normal= normal * 2 - 1;
                 float3 postPixelizationRightVector = cross(float3(0,0,-1),_PostPixelizationUpVectorWs);
+                
                 normal.xy = float2(
-                    _PostPixelizationUpVectorWs.x * normal.y + postPixelizationRightVector.x * normal.x,
-                    _PostPixelizationUpVectorWs.y * normal.y + postPixelizationRightVector.y * normal.x
+                    postPixelizationRightVector.x * normal.x + postPixelizationRightVector.y * normal.y,
+                    _PostPixelizationUpVectorWs.x * normal.x + _PostPixelizationUpVectorWs.y * normal.y
                 );
+                
                 normal = normal * 0.5 + 0.5;
                 depth = tex2D(_Depth_proxy, i.uv);
 
@@ -115,13 +97,6 @@ Shader "PixelArtRp/PixelArtLit"
                 {
                     discard;
                 }
-
-                // if(abs(i.uv.x - 0.5)>0.5 || abs(i.uv.y - 0.5)>0.5  )
-                // {
-                //     discard;
-                // }
-                
-                // color = float4(i.uv.xy,0,1);
             }
             ENDCG
         }
@@ -161,6 +136,7 @@ Shader "PixelArtRp/PixelArtLit"
             float4 _Color;
             sampler2D _Albedo;
             float4 _Albedo_ST;
+            
             float3 _DirectionalLightDir;
             float4 _ProxyBoundsCs2d; //min x, min y, max x, max y
 
@@ -174,30 +150,19 @@ Shader "PixelArtRp/PixelArtLit"
             v2f vert(appdata v)
             {
                 v2f o;
-
-                //y is flipped (needed for rendering, else it will be backfaced)
                 o.vertex = UnityObjectToClipPos(v.vertex);
-
                 float4 vertexCs = o.vertex;
-
-                //y is not flipped
+                
                 #if UNITY_UV_STARTS_AT_TOP
                 vertexCs.y*=-1;
                 #endif
 
-                //xy range from 0.0 (left down) to 1.0 (right up)
-                float2 rendererUv = (vertexCs - _ProxyBoundsCs2d.xy)/(_ProxyBoundsCs2d.zw - _ProxyBoundsCs2d.xy);
-                
-                float2 screenUv = (_ProxyBoundsCs2d.xy + (_ProxyBoundsCs2d.zw - _ProxyBoundsCs2d.xy) * rendererUv) * 0.5 + 0.5;
-
                 o.vertex = RemapPos(vertexCs,_ProxyBoundsCs2d.xy,_ProxyBoundsCs2d.zw,float2(-1,-1),float2(1,1));
-
-                //y needs to be flipped for rendering
+                
                 #if UNITY_UV_STARTS_AT_TOP
                 o.vertex.y *= -1;
                 #endif
                 
-                o.screenUv = screenUv;
                 o.normalWs = mul(UNITY_MATRIX_M, float4(v.normal.xyz, 0));
                 o.uv = TRANSFORM_TEX(v.uv, _Albedo);
                 return o;
@@ -205,10 +170,8 @@ Shader "PixelArtRp/PixelArtLit"
 
             void frag(v2f i, out float4 color : COLOR0, out float4 normal : COLOR1)
             {
-                i.normalWs = normalize(i.normalWs);
-
                 color = tex2D(_Albedo, i.uv) * _Color;
-                normal = float4(i.normalWs.xyz * 0.5 + 0.5, 1);
+                normal = float4(normalize(i.normalWs.xyz) * 0.5 + 0.5, 1);
             }
             ENDCG
         }
