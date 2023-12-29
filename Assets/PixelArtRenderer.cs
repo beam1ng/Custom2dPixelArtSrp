@@ -55,6 +55,7 @@ public class PixelArtRenderer : MonoBehaviour
         CalculateFinalBounds();
         _finalToProxyBoundsRatio = new Vector4((_finalBoundsCs2d.z - _finalBoundsCs2d.x) / (_proxyBoundsCs2d.z - _proxyBoundsCs2d.x), (_finalBoundsCs2d.w - _finalBoundsCs2d.y) / (_proxyBoundsCs2d.w - _proxyBoundsCs2d.y), 0, 0);
         _postPixelizationUpVectorWs = Vector3.Cross(Vector3.back,Vector3.Cross(transform.rotation * Vector3.up,Vector3.back)).normalized;
+        Debug.DrawRay(transform.position,_postPixelizationUpVectorWs,Color.red);
         
         
         material.SetVector(PostPixelizationUpVectorWs,_postPixelizationUpVectorWs);
@@ -131,32 +132,5 @@ public class PixelArtRenderer : MonoBehaviour
         _finalBoundsCenterWs.w = 1;
 
         _proxyBoundsCs2d = new Vector4(proxyBoundsMinCs.x, proxyBoundsMinCs.y, proxyBoundsMaxCs.x, proxyBoundsMaxCs.y);
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Debug.DrawRay(transform.position,_postPixelizationUpVectorWs);
-        Debug.DrawRay(transform.position,_proxyRotation*_postPixelizationUpVectorWs);
-        
-        DrawBoundsGizmos(_proxyBoundsCs2d,Color.yellow);
-        DrawBoundsGizmos(_finalBoundsCs2d, Color.red);
-    }
-
-    private void DrawBoundsGizmos(Vector4 bounds, Color color)
-    {
-
-        Vector3 leftUp = new Vector3(bounds.x, bounds.w, 0);
-        Vector3 rightUp = new Vector3(bounds.z, bounds.w, 0);
-        Vector3 leftDown = new Vector3(bounds.x, bounds.y, 0);
-        Vector3 rightDown = new Vector3(bounds.z, bounds.y, 0);
-
-        Gizmos.color = color;
-        Gizmos.matrix = _currentCamera.cameraToWorldMatrix *
-                        GL.GetGPUProjectionMatrix(_currentCamera.projectionMatrix, false).inverse;
-
-        Gizmos.DrawLine(leftUp, rightUp);
-        Gizmos.DrawLine(rightUp, rightDown);
-        Gizmos.DrawLine(rightDown, leftDown);
-        Gizmos.DrawLine(leftDown, leftUp);
     }
 }

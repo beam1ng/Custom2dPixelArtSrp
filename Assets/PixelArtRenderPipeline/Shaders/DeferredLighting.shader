@@ -68,12 +68,8 @@ Shader "PixelArtRp/DeferredLighting"
                 float4 albedo = tex2D(_Albedo,i.uv);
                 float4 normal = tex2D(_Normal,i.uv) * 2 - 1;
                 
-                float intensity = saturate(dot(normal,-_DirectionalLightDir));
+                float intensity = saturate(saturate(dot(normal,-_DirectionalLightDir)) + 0.1);
                 float3 color = intensity * albedo.rgb;
-
-                //<DEBUG>
-                // return float4(albedo.rgb,1);
-                //</DEBUG>
                 
                 return float4(color,1);
             }

@@ -67,13 +67,13 @@ Shader "PixelArtRp/PixelArtLit"
                 v.vertex.xy = (1 - v.vertex) * _ProxyBoundsWs2d.xy + v.vertex * _ProxyBoundsWs2d.zw;
                 
                 v.vertex.xy = float2(
-                    postPixelizationRightVectorWs.x * v.vertex.x + postPixelizationRightVectorWs.y * v.vertex.y,
-                    _PostPixelizationUpVectorWs.x * v.vertex.x + _PostPixelizationUpVectorWs.y * v.vertex.y
+                    postPixelizationRightVectorWs.x * v.vertex.x + _PostPixelizationUpVectorWs.x * v.vertex.y,
+                    _PostPixelizationUpVectorWs.y * v.vertex.y + postPixelizationRightVectorWs.y * v.vertex.x
                 );
                 
-                v.vertex.xy += _FinalBoundsCenterWs.xy * float2(1,-1);
+                v.vertex.xy += _FinalBoundsCenterWs.xy;
                 o.vertex = mul(UNITY_MATRIX_VP,float4(v.vertex.xy,0,1));
-
+                
                 o.debug = v.uv;
                 return o;
             }
@@ -86,14 +86,15 @@ Shader "PixelArtRp/PixelArtLit"
                 float3 postPixelizationRightVector = cross(float3(0,0,-1),_PostPixelizationUpVectorWs);
                 
                 normal.xy = float2(
-                    postPixelizationRightVector.x * normal.x + postPixelizationRightVector.y * normal.y,
-                    _PostPixelizationUpVectorWs.x * normal.x + _PostPixelizationUpVectorWs.y * normal.y
+                    postPixelizationRightVector.x * normal.x + _PostPixelizationUpVectorWs.x * normal.y,
+                    _PostPixelizationUpVectorWs.y * normal.y + postPixelizationRightVector.y * normal.x
                 );
+                
                 
                 normal = normal * 0.5 + 0.5;
                 depth = tex2D(_Depth_proxy, i.uv);
 
-                if(depth == 0.00000000000001)
+                if(depth <= 0.00000000000001)
                 {
                     discard;
                 }
