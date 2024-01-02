@@ -15,7 +15,7 @@ Shader "PixelArtRp/DeferredLighting"
         {
             Blend Off
             Cull Off
-            ZWrite Off
+            ZWrite On
             ZTest Always
             
             CGPROGRAM
@@ -63,10 +63,11 @@ Shader "PixelArtRp/DeferredLighting"
                 return o;
             }
 
-            float4 frag(v2f i):SV_Target
+            float4 frag(v2f i, out float depth: SV_Depth ):SV_Target
             {
                 float4 albedo = tex2D(_Albedo,i.uv);
                 float4 normal = tex2D(_Normal,i.uv) * 2 - 1;
+                depth = tex2D(_Depth,i.uv);
                 
                 float intensity = saturate(saturate(dot(normal,-_DirectionalLightDir)) + 0.1);
                 float3 color = intensity * albedo.rgb;

@@ -15,9 +15,6 @@ public class PixelArtRenderer : MonoBehaviour
     public int boundsProxyTexelWidth;
     public int boundsProxyTexelHeight;
     
-    [SerializeField]
-    private bool pPUVisBoundToRotation = true;
-    
     private Vector3 _postPixelizationUpVectorWs = Vector3.up;
     private Quaternion _proxyRotation = Quaternion.identity;
     public Matrix4x4 localToProxyWs = Matrix4x4.identity;
