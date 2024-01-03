@@ -9,11 +9,18 @@ namespace PixelArtRenderPipeline.Code.RenderPipeline
     {
         private PixelArtRpAsset _rpAsset;
         private MultipleRenderTarget mrt;
+        private LightPass _lightPass = new LightPass();
 
         public PixelArtRpInstance(PixelArtRpAsset rpAsset)
         {
             _rpAsset = rpAsset;
             mrt = new MultipleRenderTarget();
+            _lightPass.Initialize();
+        }
+
+        ~PixelArtRpInstance()
+        {
+            _lightPass.Dispose();
         }
 
         protected override void Render(ScriptableRenderContext context, Camera[] cameras)
@@ -26,7 +33,7 @@ namespace PixelArtRenderPipeline.Code.RenderPipeline
         private void SetUpFrameData(ScriptableRenderContext context)
         {
             CommandBuffer cmd = CommandBufferPool.Get();
-            LightPass.SetupLights();
+            _lightPass.SetupLights();
             cmd.ClearRenderTarget(true, true, new Color(0, 0, 0, 0));
             context.ExecuteCommandBuffer(cmd);
             context.Submit();

@@ -8,7 +8,7 @@ Shader "PixelArtRp/DeferredLighting"
         _Normal ("Albedo (RGB)", 2D) = ""
         _Depth ("Albedo (RGB)", 2D) = ""
     }
-    
+
     SubShader
     {
         Pass
@@ -17,21 +17,19 @@ Shader "PixelArtRp/DeferredLighting"
             Cull Off
             ZWrite On
             ZTest Always
-            
+
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
+            #pragma target 4.5
 
             #include "UnityCG.cginc"
-            #include "Lighting.cginc"
             #include "UnityShaderUtilities.cginc"
             #include "UnityPBSLighting.cginc"
-            #include "UnityImageBasedLighting.cginc"
             #include "HLSLSupport.cginc"
-            #include "UnityLightingCommon.cginc"
-            #include "UnityGBuffer.cginc"
-            #include "UnityGlobalIllumination.cginc"
-            
+
+            #include "CustomLights.hlsl"
+
             struct appdata
             {
                 float4 vertex : POSITION;
@@ -45,7 +43,7 @@ Shader "PixelArtRp/DeferredLighting"
             };
 
             float3 _DirectionalLightDir;
-            
+
             sampler2D _MainTex;
             sampler2D _Albedo;
             sampler2D _Normal;
@@ -63,18 +61,34 @@ Shader "PixelArtRp/DeferredLighting"
                 return o;
             }
 
-            float4 frag(v2f i, out float depth: SV_Depth ):SV_Target
+            float4 frag(v2f i, out float depth: SV_Depth):SV_Target
             {
-                float4 albedo = tex2D(_Albedo,i.uv);
-                float4 normal = tex2D(_Normal,i.uv) * 2 - 1;
-                depth = tex2D(_Depth,i.uv);
+                float4 albedo = tex2D(_Albedo, i.uv);
+                float4 normal = tex2D(_Normal, i.uv) * 2 - 1;
+                depth = tex2D(_Depth, i.uv);
+
+                float3 color;
                 
-                float intensity = saturate(saturate(dot(normal,-_DirectionalLightDir)) + 0.1);
-                float3 color = intensity * albedo.rgb;
-                
-                return float4(color,1);
+                for (int lightIndex = 0; lightIndex < _DirectionalLightCount; lightIndex++)
+                {
+                    DirectionalLightData currentLight = _DirectionalLightDataBuffer[lightIndex];
+                    float intensity = saturate(dot(normal, currentLight.directionToLight) * currentLight.intensity);
+                    color += intensity * currentLight.color * albedo.rgb;
+                }
+
+                //DEBUG START todo: extract ws from depth and positionCs to process point lights
+
+                // for (int lightIndex = 0; lightIndex < _PointLightCount; lightIndex++)
+                // {
+                //     PointLightData currentLight = _PointLightDataBuffer[lightIndex];
+                //     float intensity = saturate(dot(normal, currentLight.position - i.positionWs) * currentLight.intensity);
+                //     color += intensity * currentLight.color * albedo.rgb;
+                // }
+
+                //DEBUG END
+
+                return float4(color, 1);
             }
-            
             ENDCG
         }
     }
