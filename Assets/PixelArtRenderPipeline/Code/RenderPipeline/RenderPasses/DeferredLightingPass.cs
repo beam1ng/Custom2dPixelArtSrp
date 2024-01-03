@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace PixelArtRenderPipeline.Code.RenderPipeline
+namespace PixelArtRenderPipeline.Code.RenderPipeline.RenderPasses
 {
-    public class DeferredLightingPass
+    public static class DeferredLightingPass
     {
         public static void DeferredLighting(ScriptableRenderContext context, MultipleRenderTarget gBuffer)
         {
@@ -13,7 +13,7 @@ namespace PixelArtRenderPipeline.Code.RenderPipeline
             mat.SetTexture("_Albedo", gBuffer.AlbedoRt);
             mat.SetTexture("_Normal", gBuffer.NormalRt);
             mat.SetTexture("_Depth", gBuffer.DepthRt);
-            cmd.Blit(null,BuiltinRenderTextureType.CameraTarget,mat);
+            cmd.Blit(null, BuiltinRenderTextureType.CameraTarget, mat);
             context.ExecuteCommandBuffer(cmd);
             context.Submit();
             cmd.Release();

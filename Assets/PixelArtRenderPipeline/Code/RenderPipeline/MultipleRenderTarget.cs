@@ -19,7 +19,7 @@ namespace PixelArtRenderPipeline.Code.RenderPipeline
                 AlbedoRt.name = "MRT_albedo";
                 NormalRt.name = "MRT_normalRt";
                 DepthRt.name = "MRT_depthRt";
-                
+
                 return;
             }
 

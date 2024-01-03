@@ -1,3 +1,4 @@
+using PixelArtRenderPipeline.Code.RenderPipeline.RenderPasses;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -8,14 +9,13 @@ namespace PixelArtRenderPipeline.Code.RenderPipeline
     {
         private PixelArtRpAsset _rpAsset;
         private MultipleRenderTarget mrt;
-        private readonly GBufferPass _gBufferPass;
 
         public PixelArtRpInstance(PixelArtRpAsset rpAsset)
         {
             _rpAsset = rpAsset;
             mrt = new MultipleRenderTarget();
         }
-        
+
         protected override void Render(ScriptableRenderContext context, Camera[] cameras)
         {
             SetUpFrameData(context);
@@ -27,7 +27,7 @@ namespace PixelArtRenderPipeline.Code.RenderPipeline
         {
             CommandBuffer cmd = CommandBufferPool.Get();
             LightPass.SetupLights();
-            cmd.ClearRenderTarget(true, true, new Color(0, 0, 0,0));
+            cmd.ClearRenderTarget(true, true, new Color(0, 0, 0, 0));
             context.ExecuteCommandBuffer(cmd);
             context.Submit();
             cmd.Release();
@@ -37,22 +37,22 @@ namespace PixelArtRenderPipeline.Code.RenderPipeline
         {
             foreach (Camera camera in cameras)
             {
-                mrt.SetupRenderTargets(camera.pixelWidth,camera.pixelHeight);
+                mrt.SetupRenderTargets(camera.pixelWidth, camera.pixelHeight);
                 mrt.CreateRenderTargets();
 
                 context.SetupCameraProperties(camera);
                 GBufferPass.DrawRenderers(context, camera, mrt);
                 DeferredLightingPass.DeferredLighting(context, mrt);
                 context.DrawSkybox(camera);
-                
-                #if UNITY_EDITOR
+
+#if UNITY_EDITOR
                 if (Application.isEditor && SceneView.lastActiveSceneView.drawGizmos)
                 {
                     context.DrawGizmos(camera, GizmoSubset.PreImageEffects);
                     context.DrawGizmos(camera, GizmoSubset.PostImageEffects);
                 }
-                #endif
-                
+#endif
+
                 context.Submit();
                 mrt.DisposeRenderTargets();
             }
@@ -60,7 +60,6 @@ namespace PixelArtRenderPipeline.Code.RenderPipeline
 
         private void DisposeFrameData()
         {
-            
         }
     }
 }

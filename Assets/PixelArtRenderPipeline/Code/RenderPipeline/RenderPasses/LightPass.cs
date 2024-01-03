@@ -2,17 +2,17 @@ using System;
 using System.Linq;
 using UnityEngine;
 
-namespace PixelArtRenderPipeline.Code.RenderPipeline
+namespace PixelArtRenderPipeline.Code.RenderPipeline.RenderPasses
 {
-    public class LightPass
+    public static class LightPass
     {
         public static void SetupLights()
         {
             Light[] lights = GameObject.FindObjectsOfType<Light>();
-            
+
             Light[] pointLights = lights.Where(l => l.type == LightType.Point).ToArray();
             Light[] directionalLights = lights.Where(l => l.type == LightType.Directional).ToArray();
-            
+
             SetupPointLights(pointLights);
             SetupDirectionalLights(directionalLights);
         }

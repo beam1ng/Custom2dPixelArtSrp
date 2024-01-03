@@ -1,11 +1,10 @@
-using UnityEngine;
 using UnityEngine.Rendering;
 
 namespace PixelArtRenderPipeline.Code.RenderPipeline
 {
     public static class SrpConstants
     {
-        public const string DeferredShadingTag = "PixelArtDeferred";
+        private const string DeferredShadingTag = "PixelArtDeferred";
         public static readonly ShaderTagId DeferredShadingTagId = new ShaderTagId(DeferredShadingTag);
 
         public const int MaxDirectionalLightsCount = 4;
