@@ -30,7 +30,6 @@ namespace PixelArtRenderPipeline.Code.Components.Editor
                 EditorGUILayout.PropertyField(_range);
             }
         
-            // Apply the modified properties to the serializedObject
             serializedObject.ApplyModifiedProperties();
         }
     }

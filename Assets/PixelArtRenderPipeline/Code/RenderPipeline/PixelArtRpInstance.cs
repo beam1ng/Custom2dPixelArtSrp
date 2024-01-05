@@ -48,6 +48,7 @@ namespace PixelArtRenderPipeline.Code.RenderPipeline
                 mrt.CreateRenderTargets();
 
                 context.SetupCameraProperties(camera);
+                
                 GBufferPass.DrawRenderers(context, camera, mrt);
                 DeferredLightingPass.DeferredLighting(context, mrt);
                 context.DrawSkybox(camera);

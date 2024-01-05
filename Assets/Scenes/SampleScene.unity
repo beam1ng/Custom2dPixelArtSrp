@@ -242,7 +242,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 1
+  near clip plane: 0.1
   far clip plane: 100
   field of view: 34
   orthographic: 1
@@ -312,7 +312,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 593208397}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.058924817, y: -0.81453764, z: -0.08406349, w: 0.5709551}
+  m_LocalRotation: {x: -0.015508942, y: 0.9469805, z: -0.04624748, w: -0.31756687}
   m_LocalPosition: {x: -4.28, y: -2.49, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 2.14}
   m_ConstrainProportionsScale: 0
@@ -334,20 +334,20 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 0127d9d3a33e4bc44853ad5ffdfeac11, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   texelPixelSize: 20
-  boundsProxyTexelWidth: 11
-  boundsProxyTexelHeight: 15
+  boundsProxyTexelWidth: 15
+  boundsProxyTexelHeight: 16
   localToProxyWs:
-    e00: -1.6735023
-    e01: -0.000000039860666
-    e02: -2.016575
-    e03: -0.00000009989172
-    e10: -0.32820672
-    e11: 4.9878545
-    e12: 0.049893744
-    e13: 0.00000025901525
-    e20: 4.700178
-    e21: 0.34829453
-    e22: -0.7145192
+    e00: -3.9821773
+    e01: 0.00000004978684
+    e02: -1.2941092
+    e03: 0.00000015652557
+    e10: 0.23505828
+    e11: 4.984868
+    e12: -0.13249893
+    e13: -0.0000003424171
+    e20: 3.014469
+    e21: -0.38870335
+    e22: -1.6992137
     e23: 0
     e30: 0
     e31: 0
@@ -422,22 +422,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 0127d9d3a33e4bc44853ad5ffdfeac11, type: 2}
   mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
-  texelPixelSize: 10
-  boundsProxyTexelWidth: 29
-  boundsProxyTexelHeight: 28
+  texelPixelSize: 15
+  boundsProxyTexelWidth: 20
+  boundsProxyTexelHeight: 19
   localToProxyWs:
-    e00: 1.7322763
-    e01: 0.0000001695243
-    e02: 4.690333
-    e03: 0.0012426074
-    e10: -1.1010318
-    e11: 4.8602853
-    e12: 0.40664315
-    e13: -0.0036793596
-    e20: -4.559271
-    e21: -1.1737249
-    e22: 1.6838712
-    e23: 0.0031659603
+    e00: 1.1782218
+    e01: -0.26947892
+    e02: -4.8517194
+    e03: 0.0021938484
+    e10: -0.90106213
+    e11: 4.8936048
+    e12: -0.4906249
+    e13: -0.0028092782
+    e20: 4.7749224
+    e21: 0.98995334
+    e22: 1.1045873
+    e23: -0.0032410622
     e30: 0
     e31: 0
     e32: 0
@@ -450,13 +450,61 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 646071640}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.25167876, y: 0.5179485, z: 0.16270256, w: 0.80119604}
+  m_LocalRotation: {x: -0.19356892, y: 0.59335685, z: -0.08648145, w: -0.77651775}
   m_LocalPosition: {x: 4.72, y: -2.04, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1784373847}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -1.3}
+--- !u!1 &699396569
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 699396572}
+  - component: {fileID: 699396571}
+  m_Layer: 0
+  m_Name: DirLight_white
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &699396571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699396569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2971a9441238a7d4687a678ca6c14f66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Type>k__BackingField: 1
+  <Intensity>k__BackingField: 10
+  <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+  <Range>k__BackingField: 10
+--- !u!4 &699396572
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699396569}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1040589530
 GameObject:
   m_ObjectHideFlags: 0
@@ -603,21 +651,21 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 0127d9d3a33e4bc44853ad5ffdfeac11, type: 2}
   mesh: {fileID: -2810666631066437292, guid: 1820f326a72f55045b5c6ac69246adbc, type: 3}
   texelPixelSize: 4
-  boundsProxyTexelWidth: 49
+  boundsProxyTexelWidth: 67
   boundsProxyTexelHeight: 47
   localToProxyWs:
-    e00: -7.180747
-    e01: 0.0000047273566
-    e02: 49.481686
-    e03: -0.28927067
-    e10: 2.1829135
-    e11: 49.951324
-    e12: 0.31677613
-    e13: -0.2117425
-    e20: -49.433514
-    e21: 2.2057767
-    e22: -7.173753
-    e23: 0.38877767
+    e00: -47.539276
+    e01: 0.75028807
+    e02: -15.474334
+    e03: 0.46441633
+    e10: -2.353872
+    e11: 49.011726
+    e12: 9.607807
+    e13: -0.24710351
+    e20: 15.31265
+    e21: 9.863456
+    e22: -46.564316
+    e23: 0.16374981
     e30: 0
     e31: 0
     e32: 0
@@ -630,7 +678,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1444348038}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.09686918, y: 0.7499026, z: 0.11268634, w: 0.6446428}
+  m_LocalRotation: {x: 0.3402064, y: -0.9219017, z: -0.040218532, w: 0.18094023}
   m_LocalPosition: {x: -0.08210772, y: 2.4952774, z: 0}
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_ConstrainProportionsScale: 0
@@ -741,4 +789,5 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 151263656}
   - {fileID: 1643508801}
+  - {fileID: 699396572}
   - {fileID: 1784373847}

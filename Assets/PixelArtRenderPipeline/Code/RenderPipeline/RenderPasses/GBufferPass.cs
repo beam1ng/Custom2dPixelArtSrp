@@ -40,7 +40,7 @@ namespace PixelArtRenderPipeline.Code.RenderPipeline.RenderPasses
 
                 cmd.ClearRenderTarget(true, true, new Color(0, 0, 0, 0));
                 cmd.DrawMesh(renderer.mesh,
-                    Matrix4x4.Translate(Vector3.Scale(renderer.transform.parent.position, Vector3.forward)) *
+                    Matrix4x4.Translate(Vector3.Scale(renderer.transform.position, Vector3.forward)) *
                     renderer.localToProxyWs, renderer.material, 0, 1);
 
                 cmd.SetGlobalTexture(Shader.PropertyToID("_Albedo_proxy"), Shader.PropertyToID("_Albedo_proxy"));

@@ -29,6 +29,7 @@ Shader "PixelArtRp/DeferredLighting"
             #include "HLSLSupport.cginc"
 
             #include "CustomLights.hlsl"
+            #include "CoordinatesUtility.hlsl"
 
             struct appdata
             {
@@ -66,9 +67,11 @@ Shader "PixelArtRp/DeferredLighting"
                 float4 albedo = tex2D(_Albedo, i.uv);
                 float4 normal = tex2D(_Normal, i.uv) * 2 - 1;
                 depth = tex2D(_Depth, i.uv);
+                float3 positionWs = ReconstructWsFromOrthoDepth(depth,i.uv);
 
                 float3 color;
-                
+
+                //directional lights
                 for (int lightIndex = 0; lightIndex < _DirectionalLightCount; lightIndex++)
                 {
                     DirectionalLightData currentLight = _DirectionalLightDataBuffer[lightIndex];
@@ -76,16 +79,15 @@ Shader "PixelArtRp/DeferredLighting"
                     color += intensity * currentLight.color * albedo.rgb;
                 }
 
-                //DEBUG START todo: extract ws from depth and positionCs to process point lights
 
-                // for (int lightIndex = 0; lightIndex < _PointLightCount; lightIndex++)
-                // {
-                //     PointLightData currentLight = _PointLightDataBuffer[lightIndex];
-                //     float intensity = saturate(dot(normal, currentLight.position - i.positionWs) * currentLight.intensity);
-                //     color += intensity * currentLight.color * albedo.rgb;
-                // }
-
-                //DEBUG END
+                //point lights
+                for (int lightIndex = 0; lightIndex < _PointLightCount; lightIndex++)
+                {
+                    PointLightData currentLight = _PointLightDataBuffer[lightIndex];
+                    float fallofFactor = saturate(pow(1 - distance(currentLight.position, positionWs) / currentLight.range, 3));
+                    float intensity =saturate(dot(normal, currentLight.position - positionWs)) * currentLight.intensity * fallofFactor;
+                    color += intensity * currentLight.color * albedo.rgb;
+                }
 
                 return float4(color, 1);
             }
