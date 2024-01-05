@@ -23,16 +23,16 @@ namespace PixelArtRenderPipeline.Code.RenderPipeline.RenderPasses
 
         public void SetupLights()
         {
-            Light[] lights = GameObject.FindObjectsOfType<Light>();
+            CustomLight[] lights = GameObject.FindObjectsOfType<CustomLight>();
 
-            Light[] pointLights = lights.Where(l => l.type == LightType.Point).ToArray();
-            Light[] directionalLights = lights.Where(l => l.type == LightType.Directional).ToArray();
+            CustomLight[] pointLights = lights.Where(l => l.Type == CustomLight.LightType.Point).ToArray();
+            CustomLight[] directionalLights = lights.Where(l => l.Type == CustomLight.LightType.Directional).ToArray();
 
             SetupPointLights(pointLights);
             SetupDirectionalLights(directionalLights);
         }
 
-        private void SetupDirectionalLights(Light[] directionalLights)
+        private void SetupDirectionalLights(CustomLight[] directionalLights)
         {
             int directionalLightCount = Math.Min(directionalLights.Length, SrpConstants.MaxDirectionalLightsCount);
             Shader.SetGlobalInt(DirectionalLightCount,directionalLightCount);
@@ -45,16 +45,16 @@ namespace PixelArtRenderPipeline.Code.RenderPipeline.RenderPasses
             
             for (int lightIndex = 0; lightIndex < directionalLightCount; lightIndex++)
             {
-                Light currentLight = directionalLights[lightIndex];
+                CustomLight currentCustomLight = directionalLights[lightIndex];
 
-                Vector4 lightDir = -currentLight.transform.forward;
+                Vector4 lightDir = -currentCustomLight.transform.forward;
                 lightDir.w = 0;
 
                 directionalLightDataArray[lightIndex] = new DirectionalLightData()
                 {
                     DirectionToLight = lightDir,
-                    Color = currentLight.color,
-                    Intensity = currentLight.intensity
+                    Color = currentCustomLight.Color,
+                    Intensity = currentCustomLight.Intensity
                 };
             }
             
@@ -62,7 +62,7 @@ namespace PixelArtRenderPipeline.Code.RenderPipeline.RenderPasses
             Shader.SetGlobalBuffer(DirectionalLightBuffer, _directionalLightBuffer);
         }
 
-        private void SetupPointLights(Light[] pointLights)
+        private void SetupPointLights(CustomLight[] pointLights)
         {
             int pointLightCount = Math.Min(pointLights.Length, SrpConstants.MaxPointLightsCount);
             Shader.SetGlobalInt(PointLightCount,pointLightCount);
@@ -76,17 +76,17 @@ namespace PixelArtRenderPipeline.Code.RenderPipeline.RenderPasses
 
             for (int lightIndex = 0; lightIndex < pointLightCount; lightIndex++)
             {
-                Light currentLight = pointLights[lightIndex];
+                CustomLight currentCustomLight = pointLights[lightIndex];
 
-                Vector4 lightPos = currentLight.transform.position;
+                Vector4 lightPos = currentCustomLight.transform.position;
                 lightPos.w = 1;
 
                 pointLightsDataArray[lightIndex] = new PointLightData()
                 {
                     Position = lightPos,
-                    Color = currentLight.color,
-                    Range = currentLight.range,
-                    Intensity = currentLight.intensity
+                    Color = currentCustomLight.Color,
+                    Range = currentCustomLight.Range,
+                    Intensity = currentCustomLight.Intensity
                 };
             }
             

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteAlways]
-public class PixelArtLayerManager : MonoBehaviour
+public class LayerManager : MonoBehaviour
 {
     [SerializeField]
     private List<GameObject> pixelArtLayers;
