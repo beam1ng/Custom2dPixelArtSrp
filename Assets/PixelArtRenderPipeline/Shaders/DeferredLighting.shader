@@ -43,16 +43,11 @@ Shader "PixelArtRp/DeferredLighting"
                 float2 uv : TEXCOORD0;
             };
 
-            float3 _DirectionalLightDir;
-
             sampler2D _MainTex;
             sampler2D _Albedo;
             sampler2D _Normal;
             sampler2D _Depth;
-            float4 _MainTex_ST;
             float4 _Albedo_ST;
-            float4 _Normal_ST;
-            float4 _Depth_ST;
 
             v2f vert(appdata v)
             {
@@ -78,7 +73,6 @@ Shader "PixelArtRp/DeferredLighting"
                     float intensity = saturate(dot(normal, currentLight.directionToLight) * currentLight.intensity);
                     color += intensity * currentLight.color * albedo.rgb;
                 }
-
 
                 //point lights
                 for (int lightIndex = 0; lightIndex < _PointLightCount; lightIndex++)
