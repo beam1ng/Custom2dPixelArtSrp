@@ -365,8 +365,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a30cb699f8f89749a23c32fbb8ffd78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationAngularSpeed: 270
-  directionChoicePeriod: 2
+  rotationAngularSpeed: 150
+  directionChoicePeriod: 1
 --- !u!1 &646071640
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,8 +398,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a30cb699f8f89749a23c32fbb8ffd78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationAngularSpeed: 270
-  directionChoicePeriod: 1.7
+  rotationAngularSpeed: 50
+  directionChoicePeriod: 2
 --- !u!33 &646071642
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -426,14 +426,14 @@ MonoBehaviour:
   boundsProxyTexelWidth: 20
   boundsProxyTexelHeight: 19
   localToProxyWs:
-    e00: 1.1782218
-    e01: -0.26947892
-    e02: -4.8517194
-    e03: 0.0021938484
-    e10: -0.90106213
-    e11: 4.8936048
-    e12: -0.4906249
-    e13: -0.0028092782
+    e00: 1.1268953
+    e01: -0.00000018394462
+    e02: -4.8713565
+    e03: 0.0020361168
+    e10: -0.96448267
+    e11: 4.901019
+    e12: -0.22311467
+    e13: -0.002925688
     e20: 4.7749224
     e21: 0.98995334
     e22: 1.1045873
@@ -626,8 +626,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a30cb699f8f89749a23c32fbb8ffd78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationAngularSpeed: 270
-  directionChoicePeriod: 1.7
+  rotationAngularSpeed: 100
+  directionChoicePeriod: 1
 --- !u!33 &1444348040
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -650,18 +650,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 0127d9d3a33e4bc44853ad5ffdfeac11, type: 2}
   mesh: {fileID: -2810666631066437292, guid: 1820f326a72f55045b5c6ac69246adbc, type: 3}
-  texelPixelSize: 4
-  boundsProxyTexelWidth: 67
-  boundsProxyTexelHeight: 47
+  texelPixelSize: 5
+  boundsProxyTexelWidth: 54
+  boundsProxyTexelHeight: 37
   localToProxyWs:
-    e00: -47.539276
-    e01: 0.75028807
-    e02: -15.474334
-    e03: 0.46441633
-    e10: -2.353872
-    e11: 49.011726
-    e12: 9.607807
-    e13: -0.24710351
+    e00: -47.497677
+    e01: -0.0000041287176
+    e02: -15.619584
+    e03: 0.4681442
+    e10: -3.0812624
+    e11: 49.017467
+    e12: 9.369822
+    e13: -0.23996586
     e20: 15.31265
     e21: 9.863456
     e22: -46.564316
@@ -782,6 +782,54 @@ Transform:
   - {fileID: 1040589534}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2078213744
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2078213746}
+  - component: {fileID: 2078213745}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &2078213745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078213744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2971a9441238a7d4687a678ca6c14f66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Type>k__BackingField: 0
+  <Intensity>k__BackingField: 1
+  <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+  <Range>k__BackingField: 1
+--- !u!4 &2078213746
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078213744}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.18433638, y: 0.2977996, z: -0.05872289, w: 0.93481934}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 22.31, y: 35.34, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -790,4 +838,5 @@ SceneRoots:
   - {fileID: 151263656}
   - {fileID: 1643508801}
   - {fileID: 699396572}
+  - {fileID: 2078213746}
   - {fileID: 1784373847}

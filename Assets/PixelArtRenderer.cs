@@ -15,9 +15,11 @@ public class PixelArtRenderer : MonoBehaviour
     public int boundsProxyTexelWidth;
     public int boundsProxyTexelHeight;
     
+    [HideInInspector]
+    public Matrix4x4 localToProxyWs = Matrix4x4.identity;
+    
     private Vector3 _postPixelizationUpVectorWs = Vector3.up;
     private Quaternion _proxyRotation = Quaternion.identity;
-    public Matrix4x4 localToProxyWs = Matrix4x4.identity;
     private Vector4 _proxyBoundsWs2d = Vector4.zero;
     private Vector4 _proxyBoundsCs2d = Vector4.zero;
     private Vector4 _finalBoundsCs2d = Vector4.zero;

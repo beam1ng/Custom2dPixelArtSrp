@@ -22,6 +22,7 @@ public class LayerManager : MonoBehaviour
     {
         if (Application.isPlaying)
         {
+            simulatedCameraXPosition = 10 * Mathf.Sin(2 * Mathf.PI * Time.time / 10f);
             // simulatedCameraXPosition = Camera.main.transform.position.x;
             Camera.main.transform.position = new Vector3(
                 simulatedCameraXPosition,
