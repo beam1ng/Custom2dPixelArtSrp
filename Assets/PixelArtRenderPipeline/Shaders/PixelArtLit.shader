@@ -181,7 +181,7 @@ Shader "PixelArtRp/PixelArtLit"
                 #if PIXELIZATION3D
                 normal = float4(normalize(i.normalWs.xyz) * 0.5 + 0.5, 1);
                 #else
-                normal = tex2D(_Normal, i.uv) * float4(1,1,-1,1);
+                normal = normalize(tex2D(_Normal, i.uv)* float4(1,1,-1,1));
                 #endif
             }
             ENDCG

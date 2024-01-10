@@ -79,7 +79,7 @@ Shader "PixelArtRp/DeferredLighting"
                 {
                     PointLightData currentLight = _PointLightDataBuffer[lightIndex];
                     float fallofFactor = saturate(pow(1 - distance(currentLight.position, positionWs) / currentLight.range, 3));
-                    float intensity =saturate(dot(normal, currentLight.position - positionWs)) * currentLight.intensity * fallofFactor;
+                    float intensity =saturate(dot(normal, normalize(currentLight.position - positionWs))) * currentLight.intensity * fallofFactor;
                     color += intensity * currentLight.color * albedo.rgb;
                 }
 
