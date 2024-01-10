@@ -170,9 +170,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  is3D: 1
   texelPixelSize: 4
-  boundsProxyTexelWidth: 4
-  boundsProxyTexelHeight: 291
+  boundsProxyTexelWidth: 3
+  boundsProxyTexelHeight: 251
   localToProxyWs:
     e00: 0.28745306
     e01: 0.000000012321026
@@ -297,9 +298,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  is3D: 1
   texelPixelSize: 4
-  boundsProxyTexelWidth: 2
-  boundsProxyTexelHeight: 291
+  boundsProxyTexelWidth: 1
+  boundsProxyTexelHeight: 251
   localToProxyWs:
     e00: 0.11079852
     e01: 0.00000007666688
@@ -372,9 +374,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  is3D: 1
   texelPixelSize: 4
-  boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 291
+  boundsProxyTexelWidth: 2
+  boundsProxyTexelHeight: 251
   localToProxyWs:
     e00: 0.19922471
     e01: -0.00000052533557
@@ -447,9 +450,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: cf41b7a367c23d846bf5bcc3d81f1189, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  is3D: 1
   texelPixelSize: 6
   boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 97
+  boundsProxyTexelHeight: 84
   localToProxyWs:
     e00: 0.3
     e01: 0
@@ -522,9 +526,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: cf41b7a367c23d846bf5bcc3d81f1189, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  is3D: 1
   texelPixelSize: 6
   boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 97
+  boundsProxyTexelHeight: 84
   localToProxyWs:
     e00: 0.3
     e01: 0
@@ -597,9 +602,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: cf41b7a367c23d846bf5bcc3d81f1189, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  is3D: 1
   texelPixelSize: 6
   boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 97
+  boundsProxyTexelHeight: 84
   localToProxyWs:
     e00: 0.3
     e01: 0
@@ -734,9 +740,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  is3D: 1
   texelPixelSize: 4
-  boundsProxyTexelWidth: 4
-  boundsProxyTexelHeight: 291
+  boundsProxyTexelWidth: 3
+  boundsProxyTexelHeight: 251
   localToProxyWs:
     e00: 0.23633143
     e01: -0.00000008943016
@@ -809,9 +816,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  is3D: 1
   texelPixelSize: 4
-  boundsProxyTexelWidth: 4
-  boundsProxyTexelHeight: 291
+  boundsProxyTexelWidth: 3
+  boundsProxyTexelHeight: 251
   localToProxyWs:
     e00: 0.28505117
     e01: -0.000000110842336
@@ -884,9 +892,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: cf41b7a367c23d846bf5bcc3d81f1189, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  is3D: 1
   texelPixelSize: 6
   boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 97
+  boundsProxyTexelHeight: 84
   localToProxyWs:
     e00: 0.3
     e01: 0
@@ -959,9 +968,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  is3D: 1
   texelPixelSize: 4
-  boundsProxyTexelWidth: 4
-  boundsProxyTexelHeight: 291
+  boundsProxyTexelWidth: 3
+  boundsProxyTexelHeight: 251
   localToProxyWs:
     e00: 0.2761595
     e01: 0.000001581883
@@ -1034,9 +1044,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  is3D: 1
   texelPixelSize: 4
-  boundsProxyTexelWidth: 2
-  boundsProxyTexelHeight: 291
+  boundsProxyTexelWidth: 1
+  boundsProxyTexelHeight: 251
   localToProxyWs:
     e00: 0.10029083
     e01: 0.000000058780273
@@ -1109,9 +1120,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  is3D: 1
   texelPixelSize: 4
-  boundsProxyTexelWidth: 2
-  boundsProxyTexelHeight: 291
+  boundsProxyTexelWidth: 1
+  boundsProxyTexelHeight: 251
   localToProxyWs:
     e00: 0.11515577
     e01: 0.00000003497099
@@ -1184,9 +1196,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 4156617588338f344a2ecc37477b0a64, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  is3D: 1
   texelPixelSize: 15
-  boundsProxyTexelWidth: 389
-  boundsProxyTexelHeight: 19
+  boundsProxyTexelWidth: 335
+  boundsProxyTexelHeight: 17
   localToProxyWs:
     e00: 100
     e01: 0
@@ -1259,9 +1272,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 4156617588338f344a2ecc37477b0a64, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  is3D: 1
   texelPixelSize: 4
-  boundsProxyTexelWidth: 21
-  boundsProxyTexelHeight: 55
+  boundsProxyTexelWidth: 17
+  boundsProxyTexelHeight: 47
   localToProxyWs:
     e00: -0.46207526
     e01: 0.00000025945374
@@ -1334,9 +1348,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: cf41b7a367c23d846bf5bcc3d81f1189, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  is3D: 1
   texelPixelSize: 6
   boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 97
+  boundsProxyTexelHeight: 84
   localToProxyWs:
     e00: 0.3
     e01: 0
@@ -1409,9 +1424,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  is3D: 1
   texelPixelSize: 4
-  boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 291
+  boundsProxyTexelWidth: 2
+  boundsProxyTexelHeight: 251
   localToProxyWs:
     e00: 0.18538946
     e01: -0.00000037328311
@@ -1484,9 +1500,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: cf41b7a367c23d846bf5bcc3d81f1189, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  is3D: 1
   texelPixelSize: 6
   boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 97
+  boundsProxyTexelHeight: 84
   localToProxyWs:
     e00: 0.3
     e01: 0
@@ -1559,9 +1576,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  is3D: 1
   texelPixelSize: 4
-  boundsProxyTexelWidth: 4
-  boundsProxyTexelHeight: 291
+  boundsProxyTexelWidth: 3
+  boundsProxyTexelHeight: 251
   localToProxyWs:
     e00: 0.2802177
     e01: 0.00000024137964
@@ -1587,6 +1605,54 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 727925997}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &733068122
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 733068123}
+  - component: {fileID: 733068124}
+  m_Layer: 0
+  m_Name: Point Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &733068123
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733068122}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.85, y: -1.75, z: -0.41}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1206416954}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &733068124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733068122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2971a9441238a7d4687a678ca6c14f66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Type>k__BackingField: 1
+  <Intensity>k__BackingField: 2.4
+  <Color>k__BackingField: {r: 0.7966051, g: 0.495283, b: 1, a: 1}
+  <Range>k__BackingField: 20
 --- !u!1 &749355365
 GameObject:
   m_ObjectHideFlags: 0
@@ -1634,9 +1700,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  is3D: 1
   texelPixelSize: 4
-  boundsProxyTexelWidth: 2
-  boundsProxyTexelHeight: 291
+  boundsProxyTexelWidth: 1
+  boundsProxyTexelHeight: 251
   localToProxyWs:
     e00: 0.110525675
     e01: -0.0000011206973
@@ -1662,6 +1729,82 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 749355365}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &958875729
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 958875730}
+  - component: {fileID: 958875732}
+  - component: {fileID: 958875731}
+  m_Layer: 0
+  m_Name: Tree
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &958875730
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958875729}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1589398000}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &958875731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958875729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6841e6b4da27670408d51bcbad49284e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 13791a464e6a00840a1f7d73ae102b1f, type: 2}
+  mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  is3D: 0
+  texelPixelSize: 1
+  boundsProxyTexelWidth: 503
+  boundsProxyTexelHeight: 501
+  localToProxyWs:
+    e00: 10
+    e01: 0
+    e02: 0
+    e03: 0.00000022910535
+    e10: 0
+    e11: 10
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+--- !u!33 &958875732
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958875729}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &967575089
 GameObject:
   m_ObjectHideFlags: 0
@@ -1709,9 +1852,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: cf41b7a367c23d846bf5bcc3d81f1189, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  is3D: 1
   texelPixelSize: 6
   boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 97
+  boundsProxyTexelHeight: 84
   localToProxyWs:
     e00: 0.3
     e01: 0
@@ -1784,9 +1928,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: cf41b7a367c23d846bf5bcc3d81f1189, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  is3D: 1
   texelPixelSize: 6
   boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 97
+  boundsProxyTexelHeight: 84
   localToProxyWs:
     e00: 0.3
     e01: 0
@@ -1859,9 +2004,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  is3D: 1
   texelPixelSize: 4
-  boundsProxyTexelWidth: 2
-  boundsProxyTexelHeight: 291
+  boundsProxyTexelWidth: 1
+  boundsProxyTexelHeight: 251
   localToProxyWs:
     e00: 0.12524636
     e01: 0.00000032635535
@@ -2026,9 +2172,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: cf41b7a367c23d846bf5bcc3d81f1189, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  is3D: 1
   texelPixelSize: 6
   boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 97
+  boundsProxyTexelHeight: 84
   localToProxyWs:
     e00: 0.3
     e01: 0
@@ -2054,6 +2201,38 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1184936729}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1206416953
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1206416954}
+  m_Layer: 0
+  m_Name: Lights
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1206416954
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206416953}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 733068123}
+  m_Father: {fileID: 1589398000}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1218194715
 GameObject:
   m_ObjectHideFlags: 0
@@ -2101,9 +2280,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: cf41b7a367c23d846bf5bcc3d81f1189, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  is3D: 1
   texelPixelSize: 6
   boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 97
+  boundsProxyTexelHeight: 84
   localToProxyWs:
     e00: 0.3
     e01: 0
@@ -2222,9 +2402,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  is3D: 1
   texelPixelSize: 4
-  boundsProxyTexelWidth: 4
-  boundsProxyTexelHeight: 291
+  boundsProxyTexelWidth: 2
+  boundsProxyTexelHeight: 251
   localToProxyWs:
     e00: 0.22557922
     e01: 0.000000016405117
@@ -2279,8 +2460,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1206416954}
   - {fileID: 460087831}
   - {fileID: 474289414}
+  - {fileID: 958875730}
   m_Father: {fileID: 62217105}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1675012091
@@ -2330,9 +2513,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: cf41b7a367c23d846bf5bcc3d81f1189, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  is3D: 1
   texelPixelSize: 6
   boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 97
+  boundsProxyTexelHeight: 84
   localToProxyWs:
     e00: 0.3
     e01: 0
@@ -2405,9 +2589,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: cf41b7a367c23d846bf5bcc3d81f1189, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  is3D: 1
   texelPixelSize: 6
   boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 97
+  boundsProxyTexelHeight: 84
   localToProxyWs:
     e00: 0.3
     e01: 0
@@ -2480,9 +2665,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: cf41b7a367c23d846bf5bcc3d81f1189, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  is3D: 1
   texelPixelSize: 6
   boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 97
+  boundsProxyTexelHeight: 84
   localToProxyWs:
     e00: 0.3
     e01: 0
@@ -2555,9 +2741,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  is3D: 1
   texelPixelSize: 4
-  boundsProxyTexelWidth: 5
-  boundsProxyTexelHeight: 291
+  boundsProxyTexelWidth: 3
+  boundsProxyTexelHeight: 251
   localToProxyWs:
     e00: 0.29163587
     e01: 0.00000075746624
@@ -2630,9 +2817,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: cf41b7a367c23d846bf5bcc3d81f1189, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  is3D: 1
   texelPixelSize: 6
   boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 97
+  boundsProxyTexelHeight: 84
   localToProxyWs:
     e00: 0.3
     e01: 0
@@ -2705,9 +2893,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: cf41b7a367c23d846bf5bcc3d81f1189, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  is3D: 1
   texelPixelSize: 6
   boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 97
+  boundsProxyTexelHeight: 84
   localToProxyWs:
     e00: 0.3
     e01: 0
@@ -2826,9 +3015,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 89d87b6347c4da04cb52ecb0abb06d22, type: 2}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  is3D: 1
   texelPixelSize: 4
-  boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 291
+  boundsProxyTexelWidth: 2
+  boundsProxyTexelHeight: 251
   localToProxyWs:
     e00: 0.21525276
     e01: -0.0000007441465
@@ -2859,5 +3049,5 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1144850369}
-  - {fileID: 216481302}
   - {fileID: 62217105}
+  - {fileID: 216481302}

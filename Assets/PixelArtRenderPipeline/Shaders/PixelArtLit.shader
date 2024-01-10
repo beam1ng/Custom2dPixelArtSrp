@@ -4,6 +4,7 @@ Shader "PixelArtRp/PixelArtLit"
     {
         _Color ("Color", Color) = (0.5,0.5,0.5,1)
         _Albedo ("Albedo", 2D) = ""
+        _Normal ("Normal (for 2D)", 2D) = ""
     }
 
     SubShader
@@ -92,7 +93,7 @@ Shader "PixelArtRp/PixelArtLit"
                 normal = normal * 0.5 + 0.5;
                 depth = tex2D(_Depth_proxy, i.uv);
 
-                if(depth <= 0.00000000000001)
+                if(depth <= 0.00000000000001 || color.a <= 0.00000000000001)
                 {
                     discard;
                 }
@@ -111,6 +112,7 @@ Shader "PixelArtRp/PixelArtLit"
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
+            #pragma multi_compile _ PIXELIZATION3D
 
             #include <UnityStandardUtils.cginc>
 
@@ -128,13 +130,17 @@ Shader "PixelArtRp/PixelArtLit"
             {
                 float4 vertex : SV_POSITION;
                 float2 uv : TEXCOORD0;
-                float4 normalWs : TEXCOORD1;
-                float2 screenUv : TexCoord2;
+                float2 screenUv : TexCoord1;
+                #if PIXELIZATION3D
+                float4 normalWs : TEXCOORD2;
+                #endif
             };
 
             float4 _Color;
             sampler2D _Albedo;
+            sampler2D _Normal;
             float4 _Albedo_ST;
+            float4 _Normal_ST;
             
             float3 _DirectionalLightDir;
             float4 _ProxyBoundsCs2d; //min x, min y, max x, max y
@@ -161,8 +167,10 @@ Shader "PixelArtRp/PixelArtLit"
                 #if UNITY_UV_STARTS_AT_TOP
                 o.vertex.y *= -1;
                 #endif
-                
+
+                #if PIXELIZATION3D
                 o.normalWs = mul(UNITY_MATRIX_M, float4(v.normal.xyz, 0));
+                #endif
                 o.uv = TRANSFORM_TEX(v.uv, _Albedo);
                 return o;
             }
@@ -170,7 +178,11 @@ Shader "PixelArtRp/PixelArtLit"
             void frag(v2f i, out float4 color : COLOR0, out float4 normal : COLOR1)
             {
                 color = tex2D(_Albedo, i.uv) * _Color;
+                #if PIXELIZATION3D
                 normal = float4(normalize(i.normalWs.xyz) * 0.5 + 0.5, 1);
+                #else
+                normal = tex2D(_Normal, i.uv) * float4(1,1,-1,1);
+                #endif
             }
             ENDCG
         }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.Serialization;
 
 [ExecuteAlways]
@@ -8,6 +9,7 @@ public class PixelArtRenderer : MonoBehaviour
     public static readonly List<PixelArtRenderer> PixelArtRenderers = new List<PixelArtRenderer>();
     public Material material;
     public Mesh mesh;
+    public bool is3D = false;
     
     [Range(1,20)]
     public int texelPixelSize = 10;
@@ -56,7 +58,7 @@ public class PixelArtRenderer : MonoBehaviour
         _postPixelizationUpVectorWs = Vector3.Cross(Vector3.back,Vector3.Cross(transform.rotation * Vector3.up,Vector3.back)).normalized;
         Debug.DrawRay(transform.position,_postPixelizationUpVectorWs,Color.red);
         
-        
+        material.SetKeyword(new LocalKeyword(material.shader, "PIXELIZATION3D"),is3D);
         material.SetVector(PostPixelizationUpVectorWs,_postPixelizationUpVectorWs);
         material.SetVector(ProxyBoundsCs2d,_proxyBoundsCs2d);
         material.SetVector(ProxyBoundsWs2d,_proxyBoundsWs2d);
