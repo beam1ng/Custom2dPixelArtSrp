@@ -47,7 +47,7 @@ namespace PixelArtRenderPipeline.Code.RenderPipeline.RenderPasses
                 cmd.SetGlobalTexture(Shader.PropertyToID("_Normal_proxy"), Shader.PropertyToID("_Normal_proxy"));
                 cmd.SetGlobalTexture(Shader.PropertyToID("_Depth_proxy"), Shader.PropertyToID("_Depth_proxy"));
 
-                Mesh mesh = MeshUtility.GetQuad(width, height);
+                Mesh mesh = MeshUtility.GetQuad();
 
                 cmd.SetRenderTarget(gBuffer, gBuffer.DepthRt);
                 cmd.DrawMesh(mesh, Matrix4x4.identity, renderer.material, 0, 0);

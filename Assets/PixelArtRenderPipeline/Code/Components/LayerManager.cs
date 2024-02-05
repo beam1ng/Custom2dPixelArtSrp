@@ -4,11 +4,11 @@ using UnityEngine;
 [ExecuteAlways]
 public class LayerManager : MonoBehaviour
 {
-    [SerializeField]
-    private List<GameObject> pixelArtLayers;
+    [field: SerializeField]
+    public List<GameObject> pixelArtLayers { get; set; }
 
-    [SerializeField]
-    private float simulatedCameraXPosition;
+    [field: SerializeField]
+    public float simulatedCameraXPosition { get; set; }
 
     private float CalculateLayerOffset(GameObject layer)
     {
@@ -20,6 +20,7 @@ public class LayerManager : MonoBehaviour
 
     private void Update()
     {
+        //for testing purposes
         if (Application.isPlaying)
         {
             simulatedCameraXPosition = 10 * Mathf.Sin(2 * Mathf.PI * Time.time / 10f);
@@ -29,8 +30,13 @@ public class LayerManager : MonoBehaviour
                 Camera.main.transform.position.y,
                 Camera.main.transform.position.z
             );
+            
+            UpdateLayerPositions();
         }
-        
+    }
+
+    public void UpdateLayerPositions()
+    {
         for (int i = 0; i < pixelArtLayers.Count; i++)
         {
             var position = pixelArtLayers[i].transform.position;

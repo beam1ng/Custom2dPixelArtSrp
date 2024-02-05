@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.Serialization;
 
 [ExecuteAlways]
+[RequireComponent(typeof(MeshFilter))]
 public class PixelArtRenderer : MonoBehaviour
 {
     public static readonly List<PixelArtRenderer> PixelArtRenderers = new List<PixelArtRenderer>();
@@ -17,11 +17,12 @@ public class PixelArtRenderer : MonoBehaviour
     public int boundsProxyTexelWidth;
     public int boundsProxyTexelHeight;
     
+    public Quaternion ProxyRotation { get; private set; } = Quaternion.identity;
+    public Vector3 postPixelizationUpVectorWs { get; private set; } = Vector3.up;
+    
     [HideInInspector]
     public Matrix4x4 localToProxyWs = Matrix4x4.identity;
-    
-    private Vector3 _postPixelizationUpVectorWs = Vector3.up;
-    private Quaternion _proxyRotation = Quaternion.identity;
+
     private Vector4 _proxyBoundsWs2d = Vector4.zero;
     private Vector4 _proxyBoundsCs2d = Vector4.zero;
     private Vector4 _finalBoundsCs2d = Vector4.zero;
@@ -31,19 +32,19 @@ public class PixelArtRenderer : MonoBehaviour
     private static readonly int ProxyBoundsWs2d = Shader.PropertyToID("_ProxyBoundsWs2d");
     private static readonly int ProxyBoundsCs2d = Shader.PropertyToID("_ProxyBoundsCs2d");
     private static readonly int FinalBoundsCs2d = Shader.PropertyToID("_FinalBoundsCs2d");
-    private static readonly int PostPixelizationUpVectorWs = Shader.PropertyToID("_PostPixelizationUpVectorWs");
+    private static readonly int PostPixelizationUpVectorWsID = Shader.PropertyToID("_PostPixelizationUpVectorWs");
     private static readonly int FinalToProxyBoundsRatio = Shader.PropertyToID("_FinalToProxyBoundsRatio");
     private static readonly int FinalBoundsCenterWs = Shader.PropertyToID("_FinalBoundsCenterWs");
 
     private Camera _currentCamera;
 
-    private void OnEnable()
+    public void OnEnable()
     {
         PixelArtRenderers.Add(this);
         mesh = GetComponent<MeshFilter>().sharedMesh;
     }
 
-    private void OnDisable()
+    public void OnDisable()
     {
         PixelArtRenderers.Remove(this);
     }
@@ -51,15 +52,15 @@ public class PixelArtRenderer : MonoBehaviour
     public void UpdateRenderingData(Camera camera)
     {
         _currentCamera = camera;
-        _proxyRotation = Quaternion.FromToRotation(_postPixelizationUpVectorWs, Vector3.up);
+        ProxyRotation = Quaternion.FromToRotation(postPixelizationUpVectorWs, Vector3.up);
         CalculateProxyBounds();
         CalculateFinalBounds();
         _finalToProxyBoundsRatio = new Vector4((_finalBoundsCs2d.z - _finalBoundsCs2d.x) / (_proxyBoundsCs2d.z - _proxyBoundsCs2d.x), (_finalBoundsCs2d.w - _finalBoundsCs2d.y) / (_proxyBoundsCs2d.w - _proxyBoundsCs2d.y), 0, 0);
-        _postPixelizationUpVectorWs = Vector3.Cross(Vector3.back,Vector3.Cross(transform.rotation * Vector3.up,Vector3.back)).normalized;
-        Debug.DrawRay(transform.position,_postPixelizationUpVectorWs,Color.red);
+        postPixelizationUpVectorWs = Vector3.Cross(Vector3.back,Vector3.Cross(transform.rotation * Vector3.up,Vector3.back)).normalized;
+        Debug.DrawRay(transform.position,postPixelizationUpVectorWs,Color.red);
         
         material.SetKeyword(new LocalKeyword(material.shader, "PIXELIZATION3D"),is3D);
-        material.SetVector(PostPixelizationUpVectorWs,_postPixelizationUpVectorWs);
+        material.SetVector(PostPixelizationUpVectorWsID,postPixelizationUpVectorWs);
         material.SetVector(ProxyBoundsCs2d,_proxyBoundsCs2d);
         material.SetVector(ProxyBoundsWs2d,_proxyBoundsWs2d);
         material.SetVector(FinalBoundsCs2d,_finalBoundsCs2d);
@@ -82,7 +83,7 @@ public class PixelArtRenderer : MonoBehaviour
     private void CalculateProxyBounds()
     {
         Bounds finalBoundsWs = GeometryUtility.CalculateBounds(mesh.vertices,  transform.localToWorldMatrix);
-        localToProxyWs = Matrix4x4.Rotate(_proxyRotation) * Matrix4x4.Translate(-finalBoundsWs.center) * transform.localToWorldMatrix;
+        localToProxyWs = Matrix4x4.Rotate(ProxyRotation) * Matrix4x4.Translate(-finalBoundsWs.center) * transform.localToWorldMatrix;
         
         Bounds proxyBoundsWs = GeometryUtility.CalculateBounds(mesh.vertices, localToProxyWs);
 

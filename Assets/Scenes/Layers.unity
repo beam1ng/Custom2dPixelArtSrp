@@ -172,8 +172,8 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   is3D: 1
   texelPixelSize: 4
-  boundsProxyTexelWidth: 4
-  boundsProxyTexelHeight: 273
+  boundsProxyTexelWidth: 6
+  boundsProxyTexelHeight: 411
   localToProxyWs:
     e00: 0.28745306
     e01: 0.000000012321026
@@ -228,11 +228,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bff365c1140d8be44b9ad095c0f986ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pixelArtLayers:
+  <pixelArtLayers>k__BackingField:
   - {fileID: 2062515866}
   - {fileID: 1589397999}
   - {fileID: 1264052888}
-  simulatedCameraXPosition: -0.02
+  <simulatedCameraXPosition>k__BackingField: 0
 --- !u!4 &62217105
 Transform:
   m_ObjectHideFlags: 0
@@ -300,8 +300,8 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   is3D: 1
   texelPixelSize: 4
-  boundsProxyTexelWidth: 2
-  boundsProxyTexelHeight: 274
+  boundsProxyTexelWidth: 3
+  boundsProxyTexelHeight: 411
   localToProxyWs:
     e00: 0.11079852
     e01: 0.00000007666688
@@ -376,8 +376,8 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   is3D: 1
   texelPixelSize: 4
-  boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 273
+  boundsProxyTexelWidth: 4
+  boundsProxyTexelHeight: 411
   localToProxyWs:
     e00: 0.19922471
     e01: -0.00000052533557
@@ -430,8 +430,8 @@ Transform:
   m_GameObject: {fileID: 176020334}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6968129, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 10, z: 1}
+  m_LocalPosition: {x: 0.6968129, y: -7.784989, z: 0}
+  m_LocalScale: {x: 4.4883704, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2062515867}
@@ -452,17 +452,17 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   is3D: 1
   texelPixelSize: 6
-  boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 91
+  boundsProxyTexelWidth: 62
+  boundsProxyTexelHeight: 137
   localToProxyWs:
-    e00: 0.3
+    e00: 4.4883704
     e01: 0
     e02: 0
-    e03: 0
+    e03: 0.000000059604645
     e10: 0
     e11: 10
     e12: 0
-    e13: 0
+    e13: -0.00000047683716
     e20: 0
     e21: 0
     e22: 1
@@ -506,8 +506,8 @@ Transform:
   m_GameObject: {fileID: 191332117}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.8683184, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 10, z: 1}
+  m_LocalPosition: {x: -1.8683184, y: -5.5360594, z: 0}
+  m_LocalScale: {x: 5.8745384, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2062515867}
@@ -528,13 +528,13 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   is3D: 1
   texelPixelSize: 6
-  boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 91
+  boundsProxyTexelWidth: 81
+  boundsProxyTexelHeight: 137
   localToProxyWs:
-    e00: 0.3
+    e00: 5.8745384
     e01: 0
     e02: 0
-    e03: 0
+    e03: -0.00000011920929
     e10: 0
     e11: 10
     e12: 0
@@ -555,6 +555,54 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 191332117}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &194902572
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 194902573}
+  - component: {fileID: 194902574}
+  m_Layer: 0
+  m_Name: Point Light (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &194902573
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194902572}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.6, y: -2.47, z: 0.11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1206416954}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &194902574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194902572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2971a9441238a7d4687a678ca6c14f66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Type>k__BackingField: 1
+  <Intensity>k__BackingField: 5
+  <Color>k__BackingField: {r: 1, g: 0.060549736, b: 0, a: 1}
+  <Range>k__BackingField: 20
 --- !u!1 &213097954
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,8 +630,8 @@ Transform:
   m_GameObject: {fileID: 213097954}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.56554, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 10, z: 1}
+  m_LocalPosition: {x: 15.56554, y: -6.8954782, z: 0}
+  m_LocalScale: {x: 5.8117957, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2062515867}
@@ -604,10 +652,10 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   is3D: 1
   texelPixelSize: 6
-  boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 91
+  boundsProxyTexelWidth: 80
+  boundsProxyTexelHeight: 137
   localToProxyWs:
-    e00: 0.3
+    e00: 5.8117957
     e01: 0
     e02: 0
     e03: 0
@@ -742,8 +790,8 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   is3D: 1
   texelPixelSize: 4
-  boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 274
+  boundsProxyTexelWidth: 5
+  boundsProxyTexelHeight: 411
   localToProxyWs:
     e00: 0.23633143
     e01: -0.00000008943016
@@ -818,8 +866,8 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   is3D: 1
   texelPixelSize: 4
-  boundsProxyTexelWidth: 4
-  boundsProxyTexelHeight: 273
+  boundsProxyTexelWidth: 6
+  boundsProxyTexelHeight: 411
   localToProxyWs:
     e00: 0.28505117
     e01: -0.000000110842336
@@ -872,8 +920,8 @@ Transform:
   m_GameObject: {fileID: 365019851}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.072542, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 10, z: 1}
+  m_LocalPosition: {x: -8.072542, y: -7.2802477, z: 0}
+  m_LocalScale: {x: 3.2273366, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2062515867}
@@ -894,10 +942,10 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   is3D: 1
   texelPixelSize: 6
-  boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 91
+  boundsProxyTexelWidth: 45
+  boundsProxyTexelHeight: 137
   localToProxyWs:
-    e00: 0.3
+    e00: 3.2273366
     e01: 0
     e02: 0
     e03: 0
@@ -970,8 +1018,8 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   is3D: 1
   texelPixelSize: 4
-  boundsProxyTexelWidth: 4
-  boundsProxyTexelHeight: 273
+  boundsProxyTexelWidth: 6
+  boundsProxyTexelHeight: 411
   localToProxyWs:
     e00: 0.2761595
     e01: 0.000001581883
@@ -1046,8 +1094,8 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   is3D: 1
   texelPixelSize: 4
-  boundsProxyTexelWidth: 1
-  boundsProxyTexelHeight: 274
+  boundsProxyTexelWidth: 2
+  boundsProxyTexelHeight: 411
   localToProxyWs:
     e00: 0.10029083
     e01: 0.000000058780273
@@ -1122,8 +1170,8 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   is3D: 1
   texelPixelSize: 4
-  boundsProxyTexelWidth: 2
-  boundsProxyTexelHeight: 274
+  boundsProxyTexelWidth: 3
+  boundsProxyTexelHeight: 411
   localToProxyWs:
     e00: 0.11515577
     e01: 0.00000003497099
@@ -1198,8 +1246,8 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   is3D: 1
   texelPixelSize: 15
-  boundsProxyTexelWidth: 365
-  boundsProxyTexelHeight: 18
+  boundsProxyTexelWidth: 549
+  boundsProxyTexelHeight: 27
   localToProxyWs:
     e00: 100
     e01: 0
@@ -1274,8 +1322,8 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   is3D: 1
   texelPixelSize: 4
-  boundsProxyTexelWidth: 20
-  boundsProxyTexelHeight: 52
+  boundsProxyTexelWidth: 29
+  boundsProxyTexelHeight: 77
   localToProxyWs:
     e00: -0.46207526
     e01: 0.00000025945374
@@ -1328,8 +1376,8 @@ Transform:
   m_GameObject: {fileID: 636393649}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.690303, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 10, z: 1}
+  m_LocalPosition: {x: -4.690303, y: -8.69081, z: 0}
+  m_LocalScale: {x: 5.0449715, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2062515867}
@@ -1350,10 +1398,10 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   is3D: 1
   texelPixelSize: 6
-  boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 91
+  boundsProxyTexelWidth: 70
+  boundsProxyTexelHeight: 137
   localToProxyWs:
-    e00: 0.3
+    e00: 5.0449715
     e01: 0
     e02: 0
     e03: 0
@@ -1426,8 +1474,8 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   is3D: 1
   texelPixelSize: 4
-  boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 274
+  boundsProxyTexelWidth: 4
+  boundsProxyTexelHeight: 411
   localToProxyWs:
     e00: 0.18538946
     e01: -0.00000037328311
@@ -1480,8 +1528,8 @@ Transform:
   m_GameObject: {fileID: 702595682}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.1400013, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 10, z: 1}
+  m_LocalPosition: {x: 2.1400013, y: -8.6581135, z: 0}
+  m_LocalScale: {x: 3.157885, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2062515867}
@@ -1502,10 +1550,10 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   is3D: 1
   texelPixelSize: 6
-  boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 91
+  boundsProxyTexelWidth: 44
+  boundsProxyTexelHeight: 137
   localToProxyWs:
-    e00: 0.3
+    e00: 3.157885
     e01: 0
     e02: 0
     e03: 0
@@ -1578,8 +1626,8 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   is3D: 1
   texelPixelSize: 4
-  boundsProxyTexelWidth: 4
-  boundsProxyTexelHeight: 273
+  boundsProxyTexelWidth: 6
+  boundsProxyTexelHeight: 411
   localToProxyWs:
     e00: 0.2802177
     e01: 0.00000024137964
@@ -1631,7 +1679,7 @@ Transform:
   m_GameObject: {fileID: 733068122}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.95, y: 1.35, z: -1.64}
+  m_LocalPosition: {x: -3.29, y: 1.02, z: 0.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1651,7 +1699,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Type>k__BackingField: 1
   <Intensity>k__BackingField: 5
-  <Color>k__BackingField: {r: 0.7952673, g: 0.495283, b: 1, a: 1}
+  <Color>k__BackingField: {r: 0, g: 0.21176481, b: 1, a: 1}
   <Range>k__BackingField: 20
 --- !u!1 &749355365
 GameObject:
@@ -1702,8 +1750,8 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   is3D: 1
   texelPixelSize: 4
-  boundsProxyTexelWidth: 2
-  boundsProxyTexelHeight: 274
+  boundsProxyTexelWidth: 3
+  boundsProxyTexelHeight: 411
   localToProxyWs:
     e00: 0.110525675
     e01: -0.0000011206973
@@ -1729,6 +1777,54 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 749355365}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &924652921
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 924652922}
+  - component: {fileID: 924652923}
+  m_Layer: 0
+  m_Name: Point Light (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &924652922
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924652921}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.36, y: 4.8, z: 0.11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1206416954}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &924652923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924652921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2971a9441238a7d4687a678ca6c14f66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Type>k__BackingField: 1
+  <Intensity>k__BackingField: 5
+  <Color>k__BackingField: {r: 0, g: 1, b: 0.08463907, a: 1}
+  <Range>k__BackingField: 20
 --- !u!1 &958875729
 GameObject:
   m_ObjectHideFlags: 0
@@ -1778,8 +1874,8 @@ MonoBehaviour:
   mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
   is3D: 0
   texelPixelSize: 1
-  boundsProxyTexelWidth: 548
-  boundsProxyTexelHeight: 547
+  boundsProxyTexelWidth: 822
+  boundsProxyTexelHeight: 823
   localToProxyWs:
     e00: 10
     e01: 0
@@ -1832,8 +1928,8 @@ Transform:
   m_GameObject: {fileID: 967575089}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.3617525, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 10, z: 1}
+  m_LocalPosition: {x: 15.3617525, y: -8.210881, z: 0}
+  m_LocalScale: {x: 5.703265, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2062515867}
@@ -1854,10 +1950,10 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   is3D: 1
   texelPixelSize: 6
-  boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 91
+  boundsProxyTexelWidth: 79
+  boundsProxyTexelHeight: 137
   localToProxyWs:
-    e00: 0.3
+    e00: 5.703265
     e01: 0
     e02: 0
     e03: 0
@@ -1908,8 +2004,8 @@ Transform:
   m_GameObject: {fileID: 1074806980}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.396224, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 10, z: 1}
+  m_LocalPosition: {x: -14.396224, y: -7.7035456, z: 0}
+  m_LocalScale: {x: 3.0043623, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2062515867}
@@ -1930,10 +2026,10 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   is3D: 1
   texelPixelSize: 6
-  boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 91
+  boundsProxyTexelWidth: 42
+  boundsProxyTexelHeight: 137
   localToProxyWs:
-    e00: 0.3
+    e00: 3.0043623
     e01: 0
     e02: 0
     e03: 0
@@ -2006,8 +2102,8 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   is3D: 1
   texelPixelSize: 4
-  boundsProxyTexelWidth: 2
-  boundsProxyTexelHeight: 273
+  boundsProxyTexelWidth: 3
+  boundsProxyTexelHeight: 411
   localToProxyWs:
     e00: 0.12524636
     e01: 0.00000032635535
@@ -2152,8 +2248,8 @@ Transform:
   m_GameObject: {fileID: 1184936729}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.2332606, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 10, z: 1}
+  m_LocalPosition: {x: -5.2332606, y: -4.665169, z: 0}
+  m_LocalScale: {x: 5.642392, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2062515867}
@@ -2174,10 +2270,10 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   is3D: 1
   texelPixelSize: 6
-  boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 91
+  boundsProxyTexelWidth: 78
+  boundsProxyTexelHeight: 137
   localToProxyWs:
-    e00: 0.3
+    e00: 5.642392
     e01: 0
     e02: 0
     e03: 0
@@ -2231,6 +2327,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 733068123}
+  - {fileID: 194902573}
+  - {fileID: 924652922}
   m_Father: {fileID: 1589398000}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1218194715
@@ -2260,8 +2358,8 @@ Transform:
   m_GameObject: {fileID: 1218194715}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.27207, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 10, z: 1}
+  m_LocalPosition: {x: -11.27207, y: -5.776287, z: 0}
+  m_LocalScale: {x: 3.3786952, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2062515867}
@@ -2282,10 +2380,10 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   is3D: 1
   texelPixelSize: 6
-  boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 91
+  boundsProxyTexelWidth: 47
+  boundsProxyTexelHeight: 137
   localToProxyWs:
-    e00: 0.3
+    e00: 3.3786952
     e01: 0
     e02: 0
     e03: 0
@@ -2404,8 +2502,8 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   is3D: 1
   texelPixelSize: 4
-  boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 273
+  boundsProxyTexelWidth: 5
+  boundsProxyTexelHeight: 411
   localToProxyWs:
     e00: 0.22557922
     e01: 0.000000016405117
@@ -2493,8 +2591,8 @@ Transform:
   m_GameObject: {fileID: 1675012091}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.158085, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 10, z: 1}
+  m_LocalPosition: {x: 8.158085, y: -8.875753, z: 0}
+  m_LocalScale: {x: 3.1619778, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2062515867}
@@ -2515,10 +2613,10 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   is3D: 1
   texelPixelSize: 6
-  boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 91
+  boundsProxyTexelWidth: 44
+  boundsProxyTexelHeight: 137
   localToProxyWs:
-    e00: 0.3
+    e00: 3.1619778
     e01: 0
     e02: 0
     e03: 0
@@ -2569,8 +2667,8 @@ Transform:
   m_GameObject: {fileID: 1871939456}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.587793, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 10, z: 1}
+  m_LocalPosition: {x: -17.587793, y: -6.679, z: 0}
+  m_LocalScale: {x: 4.8836884, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2062515867}
@@ -2591,10 +2689,10 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   is3D: 1
   texelPixelSize: 6
-  boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 91
+  boundsProxyTexelWidth: 67
+  boundsProxyTexelHeight: 137
   localToProxyWs:
-    e00: 0.3
+    e00: 4.8836884
     e01: 0
     e02: 0
     e03: 0
@@ -2645,8 +2743,8 @@ Transform:
   m_GameObject: {fileID: 1896075566}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.0540905, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 10, z: 1}
+  m_LocalPosition: {x: -11.0540905, y: -4.6957374, z: 0}
+  m_LocalScale: {x: 4.2808423, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2062515867}
@@ -2667,17 +2765,17 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   is3D: 1
   texelPixelSize: 6
-  boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 91
+  boundsProxyTexelWidth: 59
+  boundsProxyTexelHeight: 137
   localToProxyWs:
-    e00: 0.3
+    e00: 4.2808423
     e01: 0
     e02: 0
     e03: 0
     e10: 0
     e11: 10
     e12: 0
-    e13: 0
+    e13: 0.00000047683716
     e20: 0
     e21: 0
     e22: 1
@@ -2743,8 +2841,8 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   is3D: 1
   texelPixelSize: 4
-  boundsProxyTexelWidth: 4
-  boundsProxyTexelHeight: 273
+  boundsProxyTexelWidth: 6
+  boundsProxyTexelHeight: 411
   localToProxyWs:
     e00: 0.29163587
     e01: 0.00000075746624
@@ -2797,8 +2895,8 @@ Transform:
   m_GameObject: {fileID: 1928952821}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.759604, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 10, z: 1}
+  m_LocalPosition: {x: 9.759604, y: -9.638169, z: 0}
+  m_LocalScale: {x: 4.728791, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2062515867}
@@ -2819,10 +2917,10 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   is3D: 1
   texelPixelSize: 6
-  boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 91
+  boundsProxyTexelWidth: 65
+  boundsProxyTexelHeight: 137
   localToProxyWs:
-    e00: 0.3
+    e00: 4.728791
     e01: 0
     e02: 0
     e03: 0
@@ -2873,8 +2971,8 @@ Transform:
   m_GameObject: {fileID: 2023417552}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.505026, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 10, z: 1}
+  m_LocalPosition: {x: -12.505026, y: -9.159433, z: 0}
+  m_LocalScale: {x: 5.7757673, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2062515867}
@@ -2895,10 +2993,10 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   is3D: 1
   texelPixelSize: 6
-  boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 91
+  boundsProxyTexelWidth: 80
+  boundsProxyTexelHeight: 137
   localToProxyWs:
-    e00: 0.3
+    e00: 5.7757673
     e01: 0
     e02: 0
     e03: 0
@@ -3017,8 +3115,8 @@ MonoBehaviour:
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   is3D: 1
   texelPixelSize: 4
-  boundsProxyTexelWidth: 3
-  boundsProxyTexelHeight: 273
+  boundsProxyTexelWidth: 5
+  boundsProxyTexelHeight: 411
   localToProxyWs:
     e00: 0.21525276
     e01: -0.0000007441465

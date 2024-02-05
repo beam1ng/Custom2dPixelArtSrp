@@ -11,14 +11,14 @@ public class CustomLight : MonoBehaviour
     };
 
     [field: SerializeField]
-    public LightType Type { get; private set; } = LightType.Directional;
+    public LightType Type { get; set; } = LightType.Directional;
 
     [field: SerializeField]
-    public float Intensity { get; private set; } = 1f;
+    public float Intensity { get; set; } = 1f;
 
     [field: SerializeField]
-    public Color Color { get; private set; } = Color.white;
+    public Color Color { get; set; } = Color.white;
 
     [field: SerializeField]
-    public float Range { get; private set; } = 1f;
+    public float Range { get; set; } = 1f;
 }
